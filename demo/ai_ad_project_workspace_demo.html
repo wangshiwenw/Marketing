@@ -59,7 +59,7 @@
     .hint{background:#f4fbf8;border:1px solid #d4ebe4;border-radius:12px;padding:16px;color:#344054;font-size:14px;line-height:1.75}
     .notice{background:#fff8e8;border:1px solid #f5d99e;color:#7a4b07;border-radius:12px;padding:13px 14px;font-size:13px;line-height:1.65}
     .hide{display:none!important}
-    .stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+    .stepper{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
     .step{position:relative;border:0;background:transparent;color:#667085;cursor:pointer;font-weight:900;font-size:13px;text-align:center;padding:34px 8px 0}
     .step:before{content:attr(data-step);position:absolute;top:0;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:999px;background:#eef2f6;color:#667085;display:flex;align-items:center;justify-content:center;font-size:12px;z-index:1}
     .step:after{content:"";position:absolute;top:13px;left:calc(50% + 13px);right:calc(-50% + 13px);height:2px;background:#e4e9ef}
@@ -121,6 +121,44 @@
     .mode-card{border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:#fff;cursor:pointer}
     .mode-card.active{border-color:var(--primary);background:#f4fbf8;box-shadow:inset 4px 0 0 var(--primary)}
     .mode-card h4{margin:0 0 8px;font-size:15px}.mode-card p{margin:0;color:#667085;font-size:13px;line-height:1.65}
+    .version-strip{display:flex;align-items:center;gap:8px;margin:-8px 0 14px;overflow:auto;padding:2px 0 4px}
+    .version-card{border:1px solid var(--line);border-radius:999px;background:#fff;padding:7px 10px;text-align:left;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;min-height:36px}
+    .version-card.active{border-color:var(--primary);background:#f4fbf8;box-shadow:0 0 0 2px rgba(47,117,103,.08)}
+    .version-card b{font-size:13px}
+    .version-card span{color:var(--muted);font-size:12px}
+    .version-card small{display:inline-flex;border-radius:999px;background:#eef2f6;color:#475467;padding:3px 7px;font-size:11px;font-weight:900}
+    .version-card.active small{background:#e7f7ef;color:#087443}
+    .monitor-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+    .monitor-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:14px}
+    .monitor-card span{display:block;color:var(--muted);font-size:12px;font-weight:900;margin-bottom:8px}
+    .monitor-card b{font-size:20px}
+    .monitor-card small{display:block;margin-top:6px;color:var(--muted);font-weight:800}
+    .launch-progress{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 20px;padding-top:22px}
+    .launch-progress:before{content:"";position:absolute;left:calc(16.66% + 8px);right:calc(16.66% + 8px);top:13px;height:3px;background:#e4e9ef;border-radius:999px}
+    .launch-progress:after{content:"";position:absolute;left:calc(16.66% + 8px);top:13px;height:3px;width:var(--launch-progress,0%);background:var(--primary);border-radius:999px;transition:.25s ease}
+    .launch-step{position:relative;text-align:center;color:var(--muted);font-size:12px;font-weight:900}
+    .launch-step:before{content:attr(data-index);position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:999px;background:#eef2f6;color:#667085;display:flex;align-items:center;justify-content:center;z-index:1}
+    .launch-step span{display:block;margin-bottom:5px}
+    .launch-step b{font-size:13px;color:#475467}
+    .launch-step.active,.launch-step.done{color:var(--primary)}
+    .launch-step.active:before,.launch-step.done:before{background:var(--primary);color:#fff}
+    .launch-step.active b{color:var(--ink)}
+    .comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+    .compare-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px}
+    .compare-card.active{border-color:var(--primary);box-shadow:inset 4px 0 0 var(--primary)}
+    .compare-card h4{margin:0 0 8px;font-size:15px}
+    .compare-card p{margin:0;color:#475467;font-size:13px;line-height:1.65}
+    .compare-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .compare-metrics div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px}
+    .compare-metrics span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+    .compare-metrics b{font-size:14px}
+    .review-result{border:1px solid #d4ebe4;background:#f4fbf8;border-radius:var(--radius);padding:14px;margin-top:14px}
+    .review-result h4{margin:0 0 8px;font-size:15px}
+    .review-result p{margin:0;color:#344054;font-size:13px;line-height:1.7}
+    .review-table{margin-top:14px}
+    .review-table .task-table{min-width:760px}
+    .review-table b{display:block;margin-bottom:5px}
+    .review-table small{display:block;color:var(--muted);font-size:12px;line-height:1.55}
     .script-control{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end}
     .script-control .compact-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
     .script-control .compact-row{border:1px solid var(--line);border-radius:var(--radius);padding:12px;background:#fff}
@@ -149,6 +187,13 @@
     .media-preview b{display:block;font-size:20px;margin-bottom:8px}.media-preview span{color:#d6dde8;font-size:13px}
     .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.loop-item{padding:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}.loop-item b{display:block;margin-bottom:8px}.loop-item span{color:var(--muted);font-size:13px;line-height:1.6}
     .insight-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.chart-bars{display:grid;gap:10px;margin-top:12px}.chart-row{display:grid;grid-template-columns:92px 1fr 56px;gap:10px;align-items:center;font-size:13px;color:#475467}.chart-track{height:10px;background:#ecf0f4;border-radius:999px;overflow:hidden}.chart-fill{height:100%;background:linear-gradient(90deg,var(--primary),#e3b95f);border-radius:999px}
+    .video-cell{display:flex;align-items:center;gap:10px;min-width:220px}
+    .video-thumb{width:52px;height:74px;border-radius:10px;background:#101827;overflow:hidden;flex:0 0 auto;border:1px solid var(--line)}
+    .video-thumb img,.video-thumb video{width:100%;height:100%;object-fit:cover;display:block}
+    .video-info b{display:block;margin-bottom:4px}.video-info span{display:block;color:var(--muted);font-size:12px;line-height:1.4}
+    .insight-list{display:grid;gap:12px;margin-top:12px}
+    .insight-item{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:13px}
+    .insight-item b{display:block;margin-bottom:6px}.insight-item span{display:block;color:var(--muted);font-size:13px;line-height:1.65}
     .toast{position:fixed;right:24px;bottom:24px;z-index:10;background:#142033;color:#fff;padding:12px 14px;border-radius:var(--radius);box-shadow:0 16px 36px rgba(16,24,39,.24);font-size:14px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.22s ease}
     .toast.show{opacity:1;transform:translateY(0)}
     #step0.strategy-pending{grid-template-columns:1fr}
@@ -162,10 +207,10 @@
     @keyframes spin{to{transform:rotate(360deg)}}
     @media(max-width:1100px){
       .app{display:block}.sidebar{position:sticky;top:0;width:100%;z-index:5;padding:14px 16px}.brand-sub,.nav-note{display:none}.brand{font-size:17px;margin-bottom:10px}.nav{flex-direction:row;overflow:auto;padding-bottom:2px}.nav button{white-space:nowrap}
-      .main{margin-left:0;width:100%;padding:22px}.projects{grid-template-columns:1fr 1fr}.workspace-layout,.insight-grid,.script-control,.mode-grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.loop{grid-template-columns:1fr 1fr}.script-control .compact-list{grid-template-columns:1fr}
+      .main{margin-left:0;width:100%;padding:22px}.projects{grid-template-columns:1fr 1fr}.workspace-layout,.insight-grid,.script-control,.mode-grid,.comparison-grid{grid-template-columns:1fr}.kpis,.monitor-grid{grid-template-columns:1fr 1fr}.loop{grid-template-columns:1fr 1fr}.script-control .compact-list{grid-template-columns:1fr}
     }
     @media(max-width:720px){
-      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}
+      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid,.monitor-grid,.compare-metrics{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}
     }
   </style>
 </head>
@@ -173,46 +218,79 @@
 <div class="app">
   <aside class="sidebar">
     <div class="brand">AI广告营销平台</div>
-    <div class="brand-sub">数据分析、标签沉淀、批量复制<br/>从策划到投放复盘的一站式 Demo</div>
     <div class="nav">
       <button class="active" onclick="showPage('dashboard', this)">投放看板</button>
       <button onclick="showPage('projects', this)">项目列表</button>
     </div>
-    <div class="nav-note">当前重点：把单条广告生成，扩展成可跟进、可复盘、可复制的营销闭环。</div>
   </aside>
 
   <main class="main">
     <section id="dashboard" class="page">
       <div class="topbar">
-        <div class="title"><h1>投放闭环看板</h1><p>从素材生产到投放数据回流，运营可以在这里判断该加码、淘汰、复用还是继续测试。</p></div>
-        <button class="btn btn-primary" onclick="showPage('create')">新建测试素材</button>
+        <div class="title"><h1>投放闭环看板</h1><p>展示所有项目已进入投放或待投放的广告视频，运营可以在这里判断加码、淘汰、复用还是生成新版本。</p></div>
+        <button class="btn btn-primary" onclick="showPage('create')">新建广告项目</button>
       </div>
       <div class="grid kpis">
         <div class="card metric"><span>今日消耗</span><strong>¥12,480</strong><small>ROI 1.86</small></div>
         <div class="card metric"><span>有效线索</span><strong>326</strong><small>成本 ¥38.3</small></div>
-        <div class="card metric"><span>在测素材</span><strong>42</strong><small>7 条进入放量</small></div>
+        <div class="card metric"><span>投放视频</span><strong>12</strong><small>4 条进入放量</small></div>
         <div class="card metric"><span>衰减预警</span><strong>5</strong><small style="color:var(--orange)">需准备替补</small></div>
       </div>
       
       <div class="insight-grid">
         <div class="card panel">
-          <h2 class="section-title">今日素材排行</h2>
-          <div class="table-wrap"><table class="task-table"><thead><tr><th>素材</th><th>标签</th><th>CTR</th><th>线索成本</th><th>建议</th></tr></thead><tbody>
-            <tr><td>装修报价为什么差这么多</td><td><span class="tag">价格焦虑</span><span class="tag">特写</span></td><td>3.8%</td><td>¥31</td><td><span class="status done">加预算</span></td></tr>
-            <tr><td>第一次装修怕被坑</td><td><span class="tag blue">新婚首装</span><span class="tag">痛点型</span></td><td>3.2%</td><td>¥39</td><td><span class="status doing">继续跑</span></td></tr>
-            <tr><td>80平老房翻新前后对比</td><td><span class="tag orange">老房翻新</span><span class="tag">案例</span></td><td>2.6%</td><td>¥48</td><td><span class="status wait">换钩子</span></td></tr>
-            <tr><td>1万块出租房简装</td><td><span class="tag red">低价</span><span class="tag">利益型</span></td><td>1.7%</td><td>¥76</td><td><span class="status risk">淘汰</span></td></tr>
+          <h2 class="section-title">项目投放视频</h2>
+          <div class="table-wrap"><table class="task-table"><thead><tr><th>投放视频</th><th>项目 / 版本</th><th>排期</th><th>状态</th><th>点击率</th><th>表单成本</th><th>操作</th></tr></thead><tbody>
+            <tr>
+              <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>装修报价为什么差这么多</b><span>抖音 · 9:16 · 15 秒</span></div></div></td>
+              <td>齐家网·老房翻新获客视频<br/><span class="tag green">V1 初版</span></td>
+              <td>06-08 18:00<br/>06-10 18:00</td>
+              <td><span class="status done">投放中</span></td>
+              <td>3.8%</td>
+              <td>¥41</td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">查看监控</button></td>
+            </tr>
+            <tr>
+              <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>报价差异来自哪里</b><span>抖音 · 9:16 · 15 秒</span></div></div></td>
+              <td>齐家网·老房翻新获客视频<br/><span class="tag orange">V2 复盘版</span></td>
+              <td>待排期</td>
+              <td><span class="status wait">待投放</span></td>
+              <td>待投放</td>
+              <td>待投放</td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(5)">查看版本</button></td>
+            </tr>
+            <tr>
+              <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>第一次装修怕被坑</b><span>抖音 · 9:16 · 15 秒</span></div></div></td>
+              <td>齐家网·免费报价短视频<br/><span class="tag blue">V1 初版</span></td>
+              <td>06-07 10:00<br/>06-09 10:00</td>
+              <td><span class="status doing">观察中</span></td>
+              <td>3.2%</td>
+              <td>¥39</td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">查看监控</button></td>
+            </tr>
+            <tr>
+              <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>80 平老房翻新前后对比</b><span>视频号 · 9:16 · 20 秒</span></div></div></td>
+              <td>整装套餐·品牌信任素材<br/><span class="tag dark">V1 初版</span></td>
+              <td>06-05 12:00<br/>06-07 12:00</td>
+              <td><span class="status risk">已衰减</span></td>
+              <td>2.1%</td>
+              <td>¥62</td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(5)">生成新方向</button></td>
+            </tr>
           </tbody></table></div>
         </div>
         <div class="card panel">
-          <h2 class="section-title">高转化共性</h2>
+          <h2 class="section-title">跨项目投放判断</h2>
           <div class="chart-bars">
-            <div class="chart-row"><span>价格焦虑</span><div class="chart-track"><div class="chart-fill" style="width:92%"></div></div><b>92</b></div>
-            <div class="chart-row"><span>报价单特写</span><div class="chart-track"><div class="chart-fill" style="width:84%"></div></div><b>84</b></div>
-            <div class="chart-row"><span>免费设计引导</span><div class="chart-track"><div class="chart-fill" style="width:76%"></div></div><b>76</b></div>
-            <div class="chart-row"><span>真人讲解</span><div class="chart-track"><div class="chart-fill" style="width:69%"></div></div><b>69</b></div>
+            <div class="chart-row"><span>投放中</span><div class="chart-track"><div class="chart-fill" style="width:58%"></div></div><b>7 条</b></div>
+            <div class="chart-row"><span>待投放</span><div class="chart-track"><div class="chart-fill" style="width:28%"></div></div><b>3 条</b></div>
+            <div class="chart-row"><span>需复盘</span><div class="chart-track"><div class="chart-fill" style="width:18%"></div></div><b>2 条</b></div>
           </div>
-          <div class="notice" style="margin-top:18px">下一批建议保持人群不变，只对比两种开头卖点：价格焦虑 vs 合同避坑。样本至少跑满 3 天后再推全量。</div>
+          <div class="insight-list">
+            <div class="insight-item"><b>正在放量</b><span>齐家网·老房翻新获客视频 V1 初版成本低于目标，可以继续观察并准备 V2 复盘版排期。</span></div>
+            <div class="insight-item"><b>待排期版本</b><span>V2 复盘版来自 V1 投放复盘，建议与 V1 保持同人群、小预算并跑，验证“报价避坑”方向。</span></div>
+            <div class="insight-item"><b>需要新方向</b><span>整装套餐项目点击率下降，建议从“前后对比”转向“费用拆解”或“施工节点透明”。</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -276,10 +354,11 @@
 
     <section id="workspace" class="page hide">
       <div class="topbar">
-        <div class="title"><h1>齐家网·老房翻新获客视频</h1><p>行业：家装装修　平台：抖音　目标：表单获客　状态：脚本已生成</p></div>
+        <div class="title"><h1>齐家网·老房翻新获客视频</h1><p id="versionMeta">当前版本：V1 初版　来源：投放需求单　状态：脚本已生成</p></div>
       </div>
+      <div id="versionStrip" class="version-strip"></div>
       <div class="stepper" id="stepper">
-        <button class="step active" data-step="1" onclick="setStep(0)">需求与策略</button><button class="step" data-step="2" onclick="setStep(1)">脚本生成与确认</button><button class="step" data-step="3" onclick="setStep(2)">素材生产</button><button class="step" data-step="4" onclick="setStep(3)">合成输出</button>
+        <button class="step active" data-step="1" onclick="setStep(0)">需求与策略</button><button class="step" data-step="2" onclick="setStep(1)">脚本生成与确认</button><button class="step" data-step="3" onclick="setStep(2)">素材生产</button><button class="step" data-step="4" onclick="setStep(3)">合成输出</button><button class="step" data-step="5" onclick="setStep(4)">投放与监控</button><button class="step" data-step="6" onclick="setStep(5)">复盘迭代</button>
       </div>
 
       <div id="step0" class="step-page workspace-layout strategy-pending">
@@ -373,7 +452,83 @@
         <div class="card panel">
           <h2 class="section-title">成片信息</h2>
           <div class="summary-grid"><div class="summary-item"><span>平台 / 比例</span><b>抖音 · 9:16</b></div><div class="summary-item"><span>时长 / 目标</span><b>15 秒 · 表单获客</b></div><div class="summary-item"><span>素材标签</span><b>价格焦虑 / 报价单特写</b></div><div class="summary-item"><span>交付物</span><b>视频、脚本、素材包、标签</b></div></div>
-          <div class="actions"><button class="btn btn-primary" onclick="notify('成片已加入下载队列')">下载成片</button><button class="btn btn-outline" onclick="setStep(1)">复制生成新版本</button></div>
+          <div class="actions"><button class="btn btn-primary" onclick="notify('成片已加入下载队列')">下载成片</button><button class="btn btn-primary" onclick="setStep(4)">创建投放计划</button></div>
+        </div>
+      </div>
+
+      <div id="step4" class="step-page script-stage hide">
+        <div class="card panel">
+          <h2 class="section-title">投放排期与效果监控</h2>
+          <div class="summary-grid">
+            <div class="summary-item"><span>投放版本</span><b id="monitorVersionName">V1 初版</b></div>
+            <div class="summary-item"><span>排期</span><b>06-08 18:00 - 06-10 18:00</b></div>
+            <div class="summary-item"><span>投放预算</span><b>3000 元/天 · 抖音信息流</b></div>
+            <div class="summary-item"><span>投放状态</span><b id="launchStatusText">待投放</b></div>
+          </div>
+          <div class="launch-progress" id="launchProgress">
+            <div class="launch-step active" data-launch="ready" data-index="1"><span>开始投放</span><b>提交到平台</b></div>
+            <div class="launch-step" data-launch="review" data-index="2"><span>平台审核</span><b>等待审核结果</b></div>
+            <div class="launch-step" data-launch="running" data-index="3"><span>投放中</span><b>可开始监控</b></div>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item"><span>监控目标</span><b>表单成本低于 45 元</b></div>
+            <div class="summary-item"><span>平台审核</span><b id="reviewStatusText">尚未提交</b></div>
+          </div>
+          <div class="actions"><button id="launchBtn" class="btn btn-primary" onclick="startLaunch(this)">开始投放</button><button id="monitorBtn" class="btn btn-primary hide" onclick="runMonitor(this)">开始监控</button><button class="btn btn-outline" onclick="notify('已保存排期设置')">保存排期</button></div>
+        </div>
+        <div id="monitorLoading" class="card panel ai-loading hide">
+          <div><i class="spinner"></i><b>正在同步投放数据</b><span>读取曝光、点击、表单和成本走势，生成复盘判断。</span></div>
+        </div>
+        <div id="monitorResult" class="card panel hide">
+          <h2 class="section-title">监控结果</h2>
+          <div class="monitor-grid">
+            <div class="monitor-card"><span>曝光</span><b>38,420</b><small>达到初始样本量</small></div>
+            <div class="monitor-card"><span>点击率</span><b>3.8%</b><small>高于项目均值 0.6%</small></div>
+            <div class="monitor-card"><span>表单数</span><b>126</b><small>主要来自 25-35 岁新房业主</small></div>
+            <div class="monitor-card"><span>线索成本</span><b>¥41</b><small>低于目标成本 ¥45</small></div>
+          </div>
+          <div class="review-result">
+            <h4>AI 复盘判断</h4>
+            <p>价格焦虑钩子有效，报价单特写带来较高点击；但后半段“免费设计”承接偏弱，评论中多次出现“报价准不准”“会不会后期加钱”。建议第二版保留报价差异开头，强化“按户型拆预算”和“漏项对比”证据。</p>
+          </div>
+          <div class="actions"><button class="btn btn-primary" onclick="setStep(5)">基于复盘生成新方向</button></div>
+        </div>
+      </div>
+
+      <div id="step5" class="step-page script-stage hide">
+        <div class="card panel">
+          <h2 class="section-title">复盘生成新版本</h2>
+          <div class="comparison-grid" id="versionCompare"></div>
+          <div class="review-result">
+            <h4>AI 推荐下一轮方向</h4>
+            <p>系统根据投放监控结果、评论疑问和线索成本变化，给出下一版可测试的素材方向。选择一个方向后，会在当前项目下生成新的版本。</p>
+            <div class="table-wrap review-table">
+              <table class="task-table">
+                <thead><tr><th>推荐方向</th><th>推荐原因</th><th>适合验证的问题</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><b>报价避坑型</b><small>承接 V1 的价格焦虑</small></td>
+                    <td>评论中关注报价准不准、会不会后期加钱，适合强化漏项和材料差异解释。</td>
+                    <td>用户是否更愿意留下户型信息获取详细报价。</td>
+                    <td><button class="btn btn-mini btn-primary" onclick="createVersionFromReview(this,'报价避坑型','报价差异来自漏项、材料和施工项')">生成 V2</button></td>
+                  </tr>
+                  <tr>
+                    <td><b>合同避坑型</b><small>从报价延伸到签约风险</small></td>
+                    <td>保留装修焦虑，但把重点放到合同漏项、增项条款和预算不可控，能提高咨询意愿。</td>
+                    <td>用户是否从“看报价”升级为“想要专业把关”。</td>
+                    <td><button class="btn btn-mini btn-outline" onclick="createVersionFromReview(this,'合同避坑型','装修合同漏项和增项条款容易导致预算失控')">生成 V2</button></td>
+                  </tr>
+                  <tr>
+                    <td><b>老房翻新案例型</b><small>强化真实案例和信任感</small></td>
+                    <td>当前素材点击不错但信任承接偏弱，可以用老房翻新前后变化和真实预算拆解增强可信度。</td>
+                    <td>用户是否更相信真实案例，而不只是价格钩子。</td>
+                    <td><button class="btn btn-mini btn-outline" onclick="createVersionFromReview(this,'老房翻新案例型','用真实翻新案例和预算拆解建立信任')">生成 V2</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="actions"><button class="btn btn-outline" onclick="setStep(4)">返回监控结果</button></div>
         </div>
       </div>
     </section>
@@ -410,6 +565,62 @@
   }
   let directionGenerated=false;
   let scriptGenerated=false;
+  let activeVersion=0;
+  const versions=[
+    {name:'V1 初版',source:'投放需求单',status:'已合成',adStatus:'待投放',direction:'价格焦虑型',summary:'装修报价为什么差这么多？',ctr:'3.8%',cost:'¥41',forms:'126'}
+  ];
+  function renderVersions(){
+    document.getElementById('versionStrip').innerHTML=versions.map((v,i)=>`<button class="version-card ${i===activeVersion?'active':''}" onclick="switchVersion(${i})"><b>${v.name}</b><span>${v.direction} · ${v.source}</span><small>${v.status}</small></button>`).join('');
+    const current=versions[activeVersion];
+    document.getElementById('versionMeta').textContent=`当前版本：${current.name}　来源：${current.source}　状态：${current.status}`;
+    const monitorName=document.getElementById('monitorVersionName');
+    if(monitorName) monitorName.textContent=current.name;
+    renderLaunchStatus();
+    renderVersionCompare();
+  }
+  function switchVersion(i){
+    activeVersion=i;
+    const current=versions[activeVersion];
+    document.getElementById('selectedDirection').textContent=current.direction;
+    document.getElementById('scriptDirection').textContent=current.direction;
+    renderVersions();
+    notify('已切换到 '+current.name);
+  }
+  function renderVersionCompare(){
+    const box=document.getElementById('versionCompare');
+    if(!box) return;
+    box.innerHTML=versions.map((v,i)=>`<div class="compare-card ${i===activeVersion?'active':''}"><h4>${v.name}</h4><p>来源：${v.source}<br/>方向：${v.direction}<br/>核心表达：${v.summary}</p><div class="compare-metrics"><div><span>点击率</span><b>${v.ctr}</b></div><div><span>线索成本</span><b>${v.cost}</b></div><div><span>表单数</span><b>${v.forms}</b></div></div></div>`).join('');
+  }
+  function renderLaunchStatus(){
+    const statusText=document.getElementById('launchStatusText');
+    if(!statusText) return;
+    const current=versions[activeVersion];
+    const adStatus=current.adStatus||'待投放';
+    const reviewText=document.getElementById('reviewStatusText');
+    const launchBtn=document.getElementById('launchBtn');
+    const monitorBtn=document.getElementById('monitorBtn');
+    const progress=document.getElementById('launchProgress');
+    statusText.textContent=adStatus;
+    if(reviewText) reviewText.textContent=adStatus==='待投放'?'尚未提交':adStatus==='审核中'?'平台审核中':adStatus==='投放中'?'审核通过，正在投放':'已完成监控';
+    if(progress){
+      const width=adStatus==='待投放'?'0%':adStatus==='审核中'?'calc(33.34% - 8px)':'calc(66.68% - 16px)';
+      progress.style.setProperty('--launch-progress',width);
+    }
+    document.querySelectorAll('.launch-step').forEach(step=>{
+      const key=step.dataset.launch;
+      const isReady=key==='ready';
+      const isReview=key==='review';
+      const isRunning=key==='running';
+      step.classList.toggle('active',(adStatus==='待投放'&&isReady)||(adStatus==='审核中'&&isReview)||(adStatus!=='待投放'&&adStatus!=='审核中'&&isRunning));
+      step.classList.toggle('done',(adStatus==='审核中'&&isReady)||((adStatus==='投放中'||adStatus==='监控中'||adStatus==='已复盘')&&(isReady||isReview)));
+    });
+    if(launchBtn){
+      launchBtn.classList.toggle('hide',adStatus!=='待投放');
+    }
+    if(monitorBtn){
+      monitorBtn.classList.toggle('hide',adStatus!=='投放中');
+    }
+  }
   function setButtonLoading(btn, loadingText){
     if(!btn) return ()=>{};
     const oldText=btn.textContent;
@@ -427,6 +638,22 @@
     document.getElementById('directionLoading').classList.add('hide');
     document.getElementById('directionPanel').classList.add('hide');
   }
+  function applyVersionDirection(){
+    const current=versions[activeVersion];
+    document.getElementById('selectedDirection').textContent=current.direction;
+    document.getElementById('scriptDirection').textContent=current.direction;
+    const directionCopy={
+      '价格焦虑型':'用“同一套房三份报价差很多”做开头冲突，承接免费报价表单。适合表单获客，因为用户会自然想知道自己家预算。',
+      '报价避坑型':'延续报价差异开头，重点解释漏项、材料和施工项目差异，回应投放评论里的“报价准不准、会不会后期加钱”。',
+      '合同避坑型':'从报价延伸到签约风险，用合同漏项、增项条款和预算不可控制造代入感，承接专业把关和在线咨询。',
+      '老房翻新案例型':'用真实老房翻新前后对比和预算拆解增强信任感，适合把点击兴趣转成更稳定的留资意愿。'
+    };
+    const cards=document.querySelectorAll('#directionPanel .direction-card');
+    if(cards[0]){
+      cards[0].querySelector('h4').textContent=current.direction;
+      cards[0].querySelector('p').textContent=directionCopy[current.direction]||directionCopy['价格焦虑型'];
+    }
+  }
   function confirmStrategy(btn){
     const stop=setButtonLoading(btn,'AI 分析中');
     const step=document.getElementById('step0');
@@ -438,6 +665,7 @@
       directionGenerated=true;
       document.getElementById('directionLoading').classList.add('hide');
       document.getElementById('directionPanel').classList.remove('hide');
+      applyVersionDirection();
       notify('已生成素材方向');
     },800);
   }
@@ -468,6 +696,8 @@
       document.getElementById('scriptCount').textContent='待生成';
       document.getElementById('scriptList').innerHTML='';
       scriptGenerated=false;
+      activeVersion=0;
+      renderVersions();
       notify('项目已创建，策划方案已生成');
     },800);
   }
@@ -560,9 +790,76 @@
     setTimeout(()=>{
       stop();
       taskRows.forEach((r)=>{if(r[3]!=='done'){r[3]='done';r[4]='已完成';}});
+      versions[activeVersion].status='已合成';
+      renderVersions();
       renderTasks();
       notify('广告视频已合成，进入成片输出');
       setStep(3);
+    },900);
+  }
+  function runMonitor(btn){
+    const stop=setButtonLoading(btn,'监控中');
+    document.getElementById('monitorResult').classList.add('hide');
+    document.getElementById('monitorLoading').classList.remove('hide');
+    versions[activeVersion].status='投放监控中';
+    versions[activeVersion].adStatus='监控中';
+    renderVersions();
+    setTimeout(()=>{
+      stop();
+      document.getElementById('monitorLoading').classList.add('hide');
+      document.getElementById('monitorResult').classList.remove('hide');
+      versions[activeVersion].status='已复盘';
+      versions[activeVersion].adStatus='已复盘';
+      renderVersions();
+      notify('投放数据已同步，复盘结果已生成');
+    },900);
+  }
+  function startLaunch(btn){
+    const stop=setButtonLoading(btn,'提交中');
+    document.getElementById('monitorResult').classList.add('hide');
+    document.getElementById('monitorLoading').classList.add('hide');
+    setTimeout(()=>{
+      stop();
+      versions[activeVersion].adStatus='审核中';
+      versions[activeVersion].status='平台审核中';
+      renderVersions();
+      notify('已提交平台审核');
+      setTimeout(()=>{
+        versions[activeVersion].adStatus='投放中';
+        versions[activeVersion].status='投放中';
+        renderVersions();
+        notify('平台审核通过，已开始投放');
+      },900);
+    },650);
+  }
+  function createVersionFromReview(btn, direction='报价避坑型', summary='报价差异来自漏项、材料和施工项'){
+    const stop=setButtonLoading(btn,'AI 生成中');
+    setTimeout(()=>{
+      stop();
+      const base=versions[activeVersion];
+      const nextNo=versions.length+1;
+      versions.push({
+        name:`V${nextNo} 复盘版`,
+        source:`来自 ${base.name} 投放复盘生成`,
+        status:'新方向已生成',
+        adStatus:'待投放',
+        direction,
+        summary,
+        ctr:'待投放',
+        cost:'待投放',
+        forms:'待投放'
+      });
+      activeVersion=versions.length-1;
+      renderVersions();
+      document.getElementById('directionPanel').classList.remove('hide');
+      document.getElementById('directionLoading').classList.add('hide');
+      document.getElementById('step0').classList.remove('strategy-pending');
+      applyVersionDirection();
+      document.getElementById('scriptStatus').textContent='新方向已生成，待生成脚本';
+      document.getElementById('scriptCount').textContent='待生成';
+      document.getElementById('scriptList').innerHTML='';
+      notify(`${versions[activeVersion].name} 已生成`);
+      setStep(0);
     },900);
   }
   let scripts=[
@@ -623,6 +920,7 @@
     notify(name+'已删除');
   }
   renderTasks();
+  renderVersions();
   setStep(0);
 </script>
 </body>
