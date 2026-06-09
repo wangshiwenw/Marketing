@@ -6,32 +6,39 @@
   <title>AI广告项目工作台</title>
   <style>
     :root{
-      --bg:#f3f6f8;--panel:#fff;--ink:#172033;--muted:#667085;--line:#dbe3ea;
-      --primary:#2f7567;--primary-2:#eaf4f1;--orange:#b86b16;--green:#0d7d4f;--red:#b42318;
-      --shadow:0 18px 48px rgba(16,24,39,.08);--radius:12px;
+      --bg:#f6f6f8;--panel:#fff;--ink:#202333;--muted:#7a8190;--line:#e8ebf0;
+      --primary:#ff3029;--primary-2:#fff1f0;--orange:#ff8a00;--green:#16a36b;--red:#ff3029;
+      --shadow:0 12px 34px rgba(31,35,45,.06);--radius:16px;
+      --brand-grad:linear-gradient(135deg,#ff2d28 0%,#ff6a22 100%);
+      --sidebar-grad:linear-gradient(160deg,#e92222 0%,#f0402d 48%,#e85a22 100%);
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink)}
     button,input,select,textarea{font:inherit}
     button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
     .app{min-height:100vh;display:flex}
-    .sidebar{width:248px;background:#172233;color:#fff;padding:24px 18px;position:fixed;left:0;top:0;bottom:0;overflow:auto}
-    .brand{font-size:21px;font-weight:900;line-height:1.25;margin-bottom:8px}
-    .brand-sub{font-size:12px;color:#c8d2df;line-height:1.65;margin-bottom:22px}
+    .sidebar{width:150px;background:var(--sidebar-grad);color:#fff;padding:26px 16px;position:fixed;left:0;top:0;bottom:0;overflow:auto;box-shadow:8px 0 28px rgba(255,48,41,.14)}
+    .sidebar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 12%,rgba(255,255,255,.18),transparent 24%),linear-gradient(180deg,rgba(120,18,18,.08),rgba(120,18,18,.18));pointer-events:none}
+    .sidebar>*{position:relative}
+    .brand{font-size:20px;font-weight:900;line-height:1.15;margin-bottom:8px;letter-spacing:.5px;padding-left:34px;position:relative}
+    .brand:before{content:"";position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.24);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+    .brand:after{content:"Jia.com";display:block;font-size:12px;font-weight:800;letter-spacing:0;color:rgba(255,255,255,.86);margin-top:2px}
+    .brand-sub{font-size:12px;color:rgba(255,255,255,.86);line-height:1.65;margin-bottom:22px;display:none}
     .nav{display:flex;flex-direction:column;gap:6px}
-    .nav button{border:0;background:transparent;color:#c8d2df;text-align:left;padding:12px 12px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:800}
-    .nav button.active,.nav button:hover{background:rgba(255,255,255,.12);color:#fff}
-    .nav-note{margin-top:24px;padding:14px;border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#d9e1ea;font-size:12px;line-height:1.7;background:rgba(255,255,255,.06)}
-    .main{margin-left:248px;width:calc(100% - 248px);padding:28px 34px 52px}
+    .nav button{border:0;background:transparent;color:rgba(255,255,255,.9);text-align:left;padding:13px 12px;border-radius:12px;cursor:pointer;font-size:14px;font-weight:900}
+    .nav button.active,.nav button:hover{background:#fff;color:var(--primary);box-shadow:0 10px 24px rgba(160,22,16,.16)}
+    .nav-note{position:absolute;left:16px;right:16px;bottom:22px;padding:10px 11px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;font-size:12px;line-height:1.4;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .main{margin-left:150px;width:calc(100% - 150px);padding:28px 34px 52px;background:linear-gradient(180deg,#fff 0,#f7f7f9 190px,#f6f6f8 100%)}
     .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
-    .title h1{margin:0;font-size:28px;letter-spacing:0}
+    .title h1{margin:0;font-size:28px;letter-spacing:0;color:#171b2a}
     .title p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
-    .btn{border:1px solid transparent;border-radius:10px;padding:10px 14px;font-weight:900;cursor:pointer;font-size:14px;transition:.16s ease;color:var(--ink)}
-    .btn-primary{background:var(--primary);color:white;box-shadow:0 12px 26px rgba(47,117,103,.18)}
-    .btn-ghost{background:#eef2f6;color:#253044}
+    .btn{border:1px solid transparent;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer;font-size:14px;transition:.16s ease;color:var(--ink)}
+    .btn-primary{background:var(--brand-grad);color:white;box-shadow:0 12px 24px rgba(255,48,41,.2)}
+    .btn-ghost{background:#f5f6f8;color:#253044}
     .btn-outline{background:#fff;border:1px solid var(--line);color:#253044}
     .btn:hover{transform:translateY(-1px)}
     .btn-mini{padding:7px 10px;font-size:12px}
+    .workspace-return{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 13px;color:#344054;font-size:13px;font-weight:900;box-shadow:var(--shadow)}
     .grid{display:grid;gap:16px}
     .projects{grid-template-columns:repeat(3,minmax(0,1fr))}
     .kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}
@@ -39,12 +46,12 @@
     .panel{padding:20px}
     .project-card{padding:18px;transition:.18s ease}
     .project-card:hover{transform:translateY(-2px)}
-    .tag{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;background:#eef2f6;color:#475467;margin:0 6px 6px 0}
-    .tag.green{background:#e7f7ef;color:#087443}.tag.orange{background:#fff3dd;color:#a45b07}.tag.dark{background:#eef2f6;color:#475467}.tag.red{background:#feeceb;color:#b42318}.tag.blue{background:#e8f2ff;color:#175cd3}
+    .tag{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;background:#f1f2f5;color:#596171;margin:0 6px 6px 0}
+    .tag.green{background:#e9f8f0;color:#087443}.tag.orange{background:#fff3df;color:#b25a00}.tag.dark{background:#f1f2f5;color:#596171}.tag.red{background:#fff1f0;color:var(--red)}.tag.blue{background:#eef6ff;color:#175cd3}
     .project-title{font-size:17px;font-weight:900;margin:10px 0 10px}
     .meta{font-size:13px;color:var(--muted);line-height:1.85}
     .progress{height:8px;background:#edf1f5;border-radius:999px;overflow:hidden;margin:14px 0 8px}
-    .bar{height:100%;background:var(--primary);border-radius:999px;transition:width .35s ease}
+    .bar{height:100%;background:var(--brand-grad);border-radius:999px;transition:width .35s ease}
     .progress-text{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
     .project-actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:14px}
     .project-actions .btn{width:100%;padding:9px 10px}
@@ -56,10 +63,19 @@
     .field label{display:block;font-size:13px;color:#344054;margin-bottom:7px;font-weight:800}
     .field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 12px;font-size:14px;color:var(--ink)}
     .field textarea{min-height:88px;resize:vertical}
-    .hint{background:#f4fbf8;border:1px solid #d4ebe4;border-radius:12px;padding:16px;color:#344054;font-size:14px;line-height:1.75}
-    .notice{background:#fff8e8;border:1px solid #f5d99e;color:#7a4b07;border-radius:12px;padding:13px 14px;font-size:13px;line-height:1.65}
+    .brief-box{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 14px 36px rgba(31,35,45,.05);overflow:hidden}
+    .brief-box textarea{width:100%;min-height:240px;border:0;resize:vertical;padding:22px 24px;font-size:16px;line-height:1.8;color:var(--ink);background:linear-gradient(180deg,#fff,#fffaf9)}
+    .brief-box textarea:focus{outline:0}
+    .brief-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding:14px 16px;background:#fff}
+    .brief-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .upload-chip{position:relative;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 12px;font-size:13px;font-weight:900;color:#344054;cursor:pointer}
+    .upload-chip:hover{border-color:#ffc1bb;background:#fff7f5;color:var(--primary)}
+    .upload-chip input{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .brief-example{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.7}
+    .hint{background:#fff7f2;border:1px solid #ffe0ca;border-radius:14px;padding:16px;color:#344054;font-size:14px;line-height:1.75}
+    .notice{background:#fff8e8;border:1px solid #ffdca6;color:#8a4c00;border-radius:14px;padding:13px 14px;font-size:13px;line-height:1.65}
     .hide{display:none!important}
-    .stepper{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+    .stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px}
     .step{position:relative;border:0;background:transparent;color:#667085;cursor:pointer;font-weight:900;font-size:13px;text-align:center;padding:34px 8px 0}
     .step:before{content:attr(data-step);position:absolute;top:0;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:999px;background:#eef2f6;color:#667085;display:flex;align-items:center;justify-content:center;font-size:12px;z-index:1}
     .step:after{content:"";position:absolute;top:13px;left:calc(50% + 13px);right:calc(-50% + 13px);height:2px;background:#e4e9ef}
@@ -71,6 +87,7 @@
     .create-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
     .script-stage{display:grid;grid-template-columns:1fr;gap:16px}
     .section-title{font-size:18px;font-weight:900;margin:0 0 14px}
+    .title-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:8px;background:#fff1f0;color:var(--primary);margin-right:8px;vertical-align:-5px;font-size:14px}
     .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
     .section-head .section-title{margin:0}
     .sub-title{font-size:14px;font-weight:900;color:#344054;margin:18px 0 10px}
@@ -79,15 +96,15 @@
     .pill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .direction-card,.deliver{border:1px solid var(--line);border-radius:var(--radius);background:#fff}
     .direction-card{padding:16px;margin-bottom:12px;cursor:pointer;position:relative}
-    .direction-card.active{border-color:var(--primary);background:#f4fbf8;box-shadow:inset 4px 0 0 var(--primary)}
-    .score{position:absolute;right:14px;top:14px;background:#e7f7ef;color:#087443;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900}
+    .direction-card.active{border-color:var(--primary);background:var(--primary-2);box-shadow:inset 4px 0 0 var(--primary)}
+    .score{position:absolute;right:14px;top:14px;background:var(--primary);color:#fff;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:900;box-shadow:0 8px 18px rgba(255,48,41,.18)}
     .direction-card h4{margin:0 0 8px}.direction-card p{margin:0;color:#667085;font-size:13px;line-height:1.6}
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--radius)}
     .task-table{width:100%;border-collapse:collapse;font-size:13px;min-width:680px;background:#fff}
     .task-table th,.task-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
     .task-table tr:last-child td{border-bottom:0}.task-table th{color:#667085;background:#f8fafc;font-weight:900}
     .status{font-weight:900;border-radius:999px;padding:4px 8px;font-size:12px;white-space:nowrap}
-    .status.wait{background:#f2f4f7;color:#667085}.status.doing{background:#fff3dd;color:#a45b07}.status.done{background:#e7f7ef;color:#087443}.status.risk{background:#feeceb;color:#b42318}
+    .status.wait{background:#f2f4f7;color:#667085}.status.doing{background:#fff3dd;color:#b25a00}.status.done{background:#e9f8f0;color:#087443}.status.risk{background:#fff1f0;color:var(--red)}
     .preview-phone{width:260px;height:460px;border-radius:28px;background:#0b1020;margin:0 auto;padding:13px;box-shadow:0 26px 54px rgba(16,24,39,.25)}
     .phone-screen{height:100%;border-radius:21px;background:linear-gradient(180deg,#2d4f5f,#111827 48%,#0f1724);position:relative;overflow:hidden;color:#fff;padding:18px}
     .phone-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -108,6 +125,26 @@
     .analysis-card h4{margin:0 0 8px;font-size:14px}
     .analysis-card p{margin:0;color:#475467;font-size:13px;line-height:1.7}
     .analysis-card strong{color:var(--ink)}
+    .strategy-panel{padding:18px 20px}
+    .strategy-hero{position:relative;overflow:hidden;border-radius:14px;padding:24px 220px 24px 24px;background:linear-gradient(105deg,#fff6ea 0%,#fff 58%,#ffe3cf 100%);border:1px solid #ffe1c2;margin-bottom:14px}
+    .strategy-hero:after{content:"";position:absolute;right:36px;top:26px;width:126px;height:126px;border-radius:999px;background:radial-gradient(circle,#ffd8d4 0 30%,#fff5f4 31% 50%,#ffb1a8 51% 52%,transparent 53%);opacity:.88}
+    .strategy-hero:before{content:"";position:absolute;right:82px;top:58px;width:36px;height:36px;border-radius:999px;background:var(--brand-grad);z-index:1;box-shadow:0 0 0 8px rgba(255,48,41,.12)}
+    .strategy-copy{position:relative;z-index:2;font-size:24px;line-height:1.45;font-weight:900;color:#1f2433;margin:0 0 18px}
+    .strategy-copy strong{color:var(--primary)}
+    .strategy-tags{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
+    .strategy-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffd0ca;background:rgba(255,255,255,.76);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:900;color:#303747}
+    .strategy-chip i{font-style:normal;color:var(--primary)}
+    .ai-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+    .ai-summary-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:14px;min-height:86px;display:flex;gap:12px;align-items:center}
+    .summary-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;background:#fff1f0;color:var(--primary);font-weight:900;flex:0 0 auto}
+    .ai-summary-card span{display:block;color:var(--muted);font-size:12px;font-weight:900;margin-bottom:4px}
+    .ai-summary-card b{display:block;font-size:15px;line-height:1.35}
+    .detail-toggle{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden}
+    .detail-toggle summary{cursor:pointer;padding:13px 14px;font-size:14px;font-weight:900;color:#344054;list-style:none}
+    .detail-toggle summary::-webkit-details-marker{display:none}
+    .detail-toggle summary:after{content:"展开";float:right;color:var(--primary);font-size:12px}
+    .detail-toggle[open] summary:after{content:"收起"}
+    .detail-body{border-top:1px solid var(--line);padding:14px}
     .strategy-list{display:grid;gap:10px;margin-top:12px}
     .strategy-row{display:grid;grid-template-columns:112px 1fr;gap:12px;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px;line-height:1.65}
     .strategy-row:last-child{border-bottom:0}
@@ -119,15 +156,15 @@
     .compact-row span{color:var(--muted);font-weight:800}
     .mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px}
     .mode-card{border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:#fff;cursor:pointer}
-    .mode-card.active{border-color:var(--primary);background:#f4fbf8;box-shadow:inset 4px 0 0 var(--primary)}
+    .mode-card.active{border-color:var(--primary);background:var(--primary-2);box-shadow:inset 4px 0 0 var(--primary)}
     .mode-card h4{margin:0 0 8px;font-size:15px}.mode-card p{margin:0;color:#667085;font-size:13px;line-height:1.65}
     .version-strip{display:flex;align-items:center;gap:8px;margin:-8px 0 14px;overflow:auto;padding:2px 0 4px}
     .version-card{border:1px solid var(--line);border-radius:999px;background:#fff;padding:7px 10px;text-align:left;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;min-height:36px}
-    .version-card.active{border-color:var(--primary);background:#f4fbf8;box-shadow:0 0 0 2px rgba(47,117,103,.08)}
+    .version-card.active{border-color:var(--primary);background:var(--primary-2);box-shadow:0 0 0 2px rgba(255,48,41,.08)}
     .version-card b{font-size:13px}
     .version-card span{color:var(--muted);font-size:12px}
     .version-card small{display:inline-flex;border-radius:999px;background:#eef2f6;color:#475467;padding:3px 7px;font-size:11px;font-weight:900}
-    .version-card.active small{background:#e7f7ef;color:#087443}
+    .version-card.active small{background:#fff;color:var(--primary)}
     .monitor-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
     .monitor-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:14px}
     .monitor-card span{display:block;color:var(--muted);font-size:12px;font-weight:900;margin-bottom:8px}
@@ -135,13 +172,13 @@
     .monitor-card small{display:block;margin-top:6px;color:var(--muted);font-weight:800}
     .launch-progress{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 20px;padding-top:22px}
     .launch-progress:before{content:"";position:absolute;left:calc(16.66% + 8px);right:calc(16.66% + 8px);top:13px;height:3px;background:#e4e9ef;border-radius:999px}
-    .launch-progress:after{content:"";position:absolute;left:calc(16.66% + 8px);top:13px;height:3px;width:var(--launch-progress,0%);background:var(--primary);border-radius:999px;transition:.25s ease}
+    .launch-progress:after{content:"";position:absolute;left:calc(16.66% + 8px);top:13px;height:3px;width:var(--launch-progress,0%);background:var(--brand-grad);border-radius:999px;transition:.25s ease}
     .launch-step{position:relative;text-align:center;color:var(--muted);font-size:12px;font-weight:900}
     .launch-step:before{content:attr(data-index);position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:999px;background:#eef2f6;color:#667085;display:flex;align-items:center;justify-content:center;z-index:1}
     .launch-step span{display:block;margin-bottom:5px}
     .launch-step b{font-size:13px;color:#475467}
     .launch-step.active,.launch-step.done{color:var(--primary)}
-    .launch-step.active:before,.launch-step.done:before{background:var(--primary);color:#fff}
+    .launch-step.active:before,.launch-step.done:before{background:var(--brand-grad);color:#fff}
     .launch-step.active b{color:var(--ink)}
     .comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
     .compare-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px}
@@ -152,7 +189,7 @@
     .compare-metrics div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px}
     .compare-metrics span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
     .compare-metrics b{font-size:14px}
-    .review-result{border:1px solid #d4ebe4;background:#f4fbf8;border-radius:var(--radius);padding:14px;margin-top:14px}
+    .review-result{border:1px solid #ffd8d4;background:#fff7f5;border-radius:var(--radius);padding:14px;margin-top:14px}
     .review-result h4{margin:0 0 8px;font-size:15px}
     .review-result p{margin:0;color:#344054;font-size:13px;line-height:1.7}
     .review-table{margin-top:14px}
@@ -173,7 +210,7 @@
     .script-row div:first-child{color:#667085;font-weight:800}
     .script-row b{font-size:14px}
     .phase-note{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
-    .empty-art{min-height:180px;border-radius:var(--radius);background:linear-gradient(135deg,#eef6f4,#fff);border:1px dashed #b6d4cb;display:flex;align-items:center;justify-content:center;color:#667085;font-weight:900;text-align:center;padding:16px}
+    .empty-art{min-height:180px;border-radius:var(--radius);background:linear-gradient(135deg,#fff1f0,#fff);border:1px dashed #ffc1bb;display:flex;align-items:center;justify-content:center;color:#667085;font-weight:900;text-align:center;padding:16px}
     .drawer-mask{position:fixed;inset:0;background:rgba(15,23,42,.28);z-index:20;opacity:0;pointer-events:none;transition:.18s ease}
     .drawer-mask.show{opacity:1;pointer-events:auto}
     .asset-drawer{position:fixed;right:0;top:0;bottom:0;width:min(520px,92vw);background:#fff;z-index:21;box-shadow:-20px 0 50px rgba(15,23,42,.18);transform:translateX(100%);transition:.22s ease;padding:24px;overflow:auto}
@@ -186,7 +223,7 @@
     .media-preview.image img{width:100%;height:100%;object-fit:cover;display:block}
     .media-preview b{display:block;font-size:20px;margin-bottom:8px}.media-preview span{color:#d6dde8;font-size:13px}
     .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.loop-item{padding:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}.loop-item b{display:block;margin-bottom:8px}.loop-item span{color:var(--muted);font-size:13px;line-height:1.6}
-    .insight-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.chart-bars{display:grid;gap:10px;margin-top:12px}.chart-row{display:grid;grid-template-columns:92px 1fr 56px;gap:10px;align-items:center;font-size:13px;color:#475467}.chart-track{height:10px;background:#ecf0f4;border-radius:999px;overflow:hidden}.chart-fill{height:100%;background:linear-gradient(90deg,var(--primary),#e3b95f);border-radius:999px}
+    .insight-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.chart-bars{display:grid;gap:10px;margin-top:12px}.chart-row{display:grid;grid-template-columns:92px 1fr 56px;gap:10px;align-items:center;font-size:13px;color:#475467}.chart-track{height:10px;background:#ecf0f4;border-radius:999px;overflow:hidden}.chart-fill{height:100%;background:linear-gradient(90deg,var(--primary),#ffb000);border-radius:999px}
     .video-cell{display:flex;align-items:center;gap:10px;min-width:220px}
     .video-thumb{width:52px;height:74px;border-radius:10px;background:#101827;overflow:hidden;flex:0 0 auto;border:1px solid var(--line)}
     .video-thumb img,.video-thumb video{width:100%;height:100%;object-fit:cover;display:block}
@@ -203,14 +240,14 @@
     .spinner{width:30px;height:30px;border-radius:999px;border:3px solid #dce5ec;border-top-color:var(--primary);display:inline-block;animation:spin .8s linear infinite}
     .btn.is-loading{opacity:.78;pointer-events:none}
     .btn.is-loading:before{content:"";width:13px;height:13px;border-radius:999px;border:2px solid rgba(255,255,255,.48);border-top-color:#fff;display:inline-block;margin-right:8px;vertical-align:-2px;animation:spin .8s linear infinite}
-    .btn-outline.is-loading:before,.btn-ghost.is-loading:before{border-color:rgba(47,117,103,.22);border-top-color:var(--primary)}
+    .btn-outline.is-loading:before,.btn-ghost.is-loading:before{border-color:rgba(255,48,41,.22);border-top-color:var(--primary)}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media(max-width:1100px){
       .app{display:block}.sidebar{position:sticky;top:0;width:100%;z-index:5;padding:14px 16px}.brand-sub,.nav-note{display:none}.brand{font-size:17px;margin-bottom:10px}.nav{flex-direction:row;overflow:auto;padding-bottom:2px}.nav button{white-space:nowrap}
-      .main{margin-left:0;width:100%;padding:22px}.projects{grid-template-columns:1fr 1fr}.workspace-layout,.insight-grid,.script-control,.mode-grid,.comparison-grid{grid-template-columns:1fr}.kpis,.monitor-grid{grid-template-columns:1fr 1fr}.loop{grid-template-columns:1fr 1fr}.script-control .compact-list{grid-template-columns:1fr}
+      .main{margin-left:0;width:100%;padding:22px}.projects{grid-template-columns:1fr 1fr}.workspace-layout,.insight-grid,.script-control,.mode-grid,.comparison-grid{grid-template-columns:1fr}.kpis,.monitor-grid,.ai-summary-grid{grid-template-columns:1fr 1fr}.loop{grid-template-columns:1fr 1fr}.script-control .compact-list{grid-template-columns:1fr}
     }
     @media(max-width:720px){
-      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid,.monitor-grid,.compare-metrics{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}
+      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid,.monitor-grid,.compare-metrics,.ai-summary-grid{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}
     }
   </style>
 </head>
@@ -222,6 +259,7 @@
       <button class="active" onclick="showPage('dashboard', this)">投放看板</button>
       <button onclick="showPage('projects', this)">项目列表</button>
     </div>
+    <div class="nav-note">品牌运营团队</div>
   </aside>
 
   <main class="main">
@@ -248,7 +286,7 @@
               <td><span class="status done">投放中</span></td>
               <td>3.8%</td>
               <td>¥41</td>
-              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">查看监控</button></td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(3)">查看监控</button></td>
             </tr>
             <tr>
               <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>报价差异来自哪里</b><span>抖音 · 9:16 · 15 秒</span></div></div></td>
@@ -257,7 +295,7 @@
               <td><span class="status wait">待投放</span></td>
               <td>待投放</td>
               <td>待投放</td>
-              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(5)">查看版本</button></td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">查看版本</button></td>
             </tr>
             <tr>
               <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>第一次装修怕被坑</b><span>抖音 · 9:16 · 15 秒</span></div></div></td>
@@ -266,7 +304,7 @@
               <td><span class="status doing">观察中</span></td>
               <td>3.2%</td>
               <td>¥39</td>
-              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">查看监控</button></td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(3)">查看监控</button></td>
             </tr>
             <tr>
               <td><div class="video-cell"><div class="video-thumb"><img src="assets/qijia-shot-preview.png" alt="广告视频缩略图"></div><div class="video-info"><b>80 平老房翻新前后对比</b><span>视频号 · 9:16 · 20 秒</span></div></div></td>
@@ -275,7 +313,7 @@
               <td><span class="status risk">已衰减</span></td>
               <td>2.1%</td>
               <td>¥62</td>
-              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(5)">生成新方向</button></td>
+              <td><button class="btn btn-mini btn-outline" onclick="showPage('workspace');setStep(4)">生成新方向</button></td>
             </tr>
           </tbody></table></div>
         </div>
@@ -315,7 +353,7 @@
           <div class="meta">行业：家装装修<br/>目标：咨询转化<br/>负责人：素材团队<br/>最近更新：昨天 18:05</div>
           <div class="progress"><div class="bar" style="width:72%"></div></div>
           <div class="progress-text"><span>素材生成中</span><span>待合成</span></div>
-          <div class="project-actions"><button class="btn btn-primary" onclick="showPage('workspace');setStep(2)">进入项目工作台</button></div>
+          <div class="project-actions"><button class="btn btn-primary" onclick="showPage('workspace');setStep(1)">进入项目工作台</button></div>
         </div>
         <div class="card project-card">
           <span class="tag dark">已完成</span><span class="tag">视频号</span><span class="tag green">可复用</span>
@@ -323,30 +361,31 @@
           <div class="meta">行业：整装服务<br/>目标：品牌种草<br/>负责人：投放团队<br/>最近更新：06-05 10:30</div>
           <div class="progress"><div class="bar" style="width:100%"></div></div>
           <div class="progress-text"><span>已完成</span><span>可查看详情</span></div>
-          <div class="project-actions"><button class="btn btn-primary" onclick="showPage('workspace');setStep(3)">查看详情</button></div>
+          <div class="project-actions"><button class="btn btn-primary" onclick="showPage('workspace');setStep(2)">查看详情</button></div>
         </div>
       </div>
     </section>
 
     <section id="create" class="page hide">
       <div class="topbar">
-        <div class="title"><h1>新建广告项目</h1><p>填写结构化投放需求说明，系统将自动生成策划方案、素材方向、分镜脚本和可追踪标签。</p></div>
+        <div class="title"><h1>新建广告项目</h1><p>直接描述投放需求，也可以语音输入或上传资料，AI 会自动整理成项目需求单并生成策划方案。</p></div>
       </div>
       <div class="create-layout">
         <div class="card panel">
-          <h2 class="section-title">投放需求</h2>
-          <div class="form-grid">
-            <div class="field"><label>项目名称</label><input value="齐家网·老房翻新获客视频"></div>
-            <div class="field"><label>所属行业</label><select><option>家装装修</option><option>本地生活</option><option>教育培训</option></select></div>
-            <div class="field"><label>推广产品 / 服务</label><input value="装修报价、免费设计、老房翻新"></div>
-            <div class="field"><label>投放平台</label><select><option>抖音</option><option>视频号</option><option>小红书</option></select></div>
-            <div class="field"><label>投放目标</label><select><option>表单获客</option><option>在线咨询</option><option>品牌种草</option></select></div>
-            <div class="field"><label>日预算</label><input value="3000 元"></div>
-            <div class="field"><label>视频时长</label><select><option>15 秒</option><option>30 秒</option><option>60 秒</option></select></div>
+          <h2 class="section-title">输入投放需求</h2>
+          <div class="brief-box">
+            <textarea aria-label="投放需求输入">想做一条齐家网老房翻新的抖音获客视频，时长 15 秒左右，主要希望用户留下装修报价表单。目标人群是新房业主、老房翻新用户和首次装修家庭。希望突出免费报价、透明预算、设计师上门量房、装修避坑咨询，不要夸大承诺，也不要用低价诱导。</textarea>
+            <div class="brief-tools">
+              <div class="brief-actions">
+                <button class="btn btn-outline" onclick="startVoiceInput(this)">语音输入</button>
+                <label class="upload-chip">上传文档<input type="file" accept=".doc,.docx,.pdf,.txt,.md" onchange="handleUpload(this,'文档')"></label>
+                <label class="upload-chip">上传音频<input type="file" accept="audio/*" onchange="handleUpload(this,'音频')"></label>
+                <label class="upload-chip">上传图片<input type="file" accept="image/*" onchange="handleUpload(this,'图片')"></label>
+              </div>
+              <span class="tag red">AI 自动整理需求单</span>
+            </div>
           </div>
-          <div class="field" style="margin-top:16px"><label>目标人群</label><textarea>新房业主、老房翻新用户、准备装修家庭、首次装修用户</textarea></div>
-          <div class="field" style="margin-top:16px"><label>核心卖点</label><textarea>免费报价、透明预算、设计师上门量房、老房翻新经验、装修避坑咨询</textarea></div>
-          <div class="field" style="margin-top:16px"><label>品牌限制</label><textarea>不夸大承诺，不出现低价诱导，不虚假对比，强调专业和可信。</textarea></div>
+          <div class="brief-example">可输入：推广产品、平台、预算、时长、人群、卖点、禁用表达、参考素材链接，或直接上传已有需求文档、录音和图片资料。</div>
           <div class="actions"><button class="btn btn-primary" onclick="createProject(this)">创建项目并生成策划方案</button><button class="btn btn-outline" onclick="showPage('projects')">返回项目列表</button></div>
         </div>
       </div>
@@ -354,41 +393,60 @@
 
     <section id="workspace" class="page hide">
       <div class="topbar">
-        <div class="title"><h1>齐家网·老房翻新获客视频</h1><p id="versionMeta">当前版本：V1 初版　来源：投放需求单　状态：脚本已生成</p></div>
+        <div class="title"><h1>齐家网·老房翻新获客视频</h1><p id="versionMeta">当前版本：V1 初版　来源：投放需求单　状态：脚本已生成　更新时间：2024-05-13 14:30</p></div>
+        <button class="workspace-return" onclick="showPage('projects')">返回项目列表</button>
       </div>
       <div id="versionStrip" class="version-strip"></div>
       <div class="stepper" id="stepper">
-        <button class="step active" data-step="1" onclick="setStep(0)">需求与策略</button><button class="step" data-step="2" onclick="setStep(1)">脚本生成与确认</button><button class="step" data-step="3" onclick="setStep(2)">素材生产</button><button class="step" data-step="4" onclick="setStep(3)">合成输出</button><button class="step" data-step="5" onclick="setStep(4)">投放与监控</button><button class="step" data-step="6" onclick="setStep(5)">复盘迭代</button>
+        <button class="step active" data-step="1" onclick="setStep(0)">需求与策略</button><button class="step" data-step="2" onclick="setStep(1)">脚本与素材生成</button><button class="step" data-step="3" onclick="setStep(2)">合成输出</button><button class="step" data-step="4" onclick="setStep(3)">投放与监控</button><button class="step" data-step="5" onclick="setStep(4)">复盘迭代</button>
       </div>
 
       <div id="step0" class="step-page workspace-layout strategy-pending">
-        <div class="card panel">
-          <h2 class="section-title">需求与策略</h2>
-          <div class="notice">AI 已根据投放需求单拆解：抖音 15 秒短视频要优先解决“用户为什么愿意留资”的问题，而不是单纯展示装修服务。</div>
-          <div class="analysis-grid">
-            <div class="analysis-card">
-              <h4>目标拆解</h4>
-              <p><strong>表单获客</strong>不是直接成交，素材应降低用户咨询门槛。建议把转化动作收敛成“免费获取装修报价”，避免同时塞入太多服务卖点。</p>
-            </div>
-            <div class="analysis-card">
-              <h4>人群判断</h4>
-              <p><strong>新房业主、首次装修、老房翻新</strong>共同焦虑是预算不透明。比起品牌介绍，更适合用报价差异、漏项、后期加钱制造代入感。</p>
-            </div>
-            <div class="analysis-card">
-              <h4>平台策略</h4>
-              <p><strong>抖音 15 秒</strong>需要前 3 秒给冲突。建议开头直接抛问题：“装修报价为什么差这么多？”随后用报价单特写承接。</p>
-            </div>
-            <div class="analysis-card">
-              <h4>风险约束</h4>
-              <p>需求单要求不夸大承诺、不低价诱导，因此脚本应强调“根据户型和材料拆预算”，避免出现绝对低价或保证省钱表达。</p>
+        <div class="card panel strategy-panel">
+          <h2 class="section-title"><span class="title-icon">☆</span>核心策略结论</h2>
+          <div class="strategy-hero">
+            <p class="strategy-copy">以<strong>价格焦虑</strong>为开头，面向首次装修与老房翻新人群，引导用户<strong>免费获取装修报价</strong>。</p>
+            <div class="strategy-tags">
+              <span class="strategy-chip"><i>单</i> 表单获客</span>
+              <span class="strategy-chip"><i>抖</i> 抖音 15 秒</span>
+              <span class="strategy-chip"><i>转</i> 免费报价转化</span>
             </div>
           </div>
-          <div class="sub-title">AI 建议的素材判断</div>
-          <div class="strategy-list">
-            <div class="strategy-row"><span>主卖点</span><b>透明报价优先，免费设计作为转化引导，不作为开头主钩子。</b></div>
-            <div class="strategy-row"><span>画面证据</span><b>报价单对比、红圈标注、设计师讲解户型图，比纯口播更能支撑可信度。</b></div>
-            <div class="strategy-row"><span>脚本结构</span><b>疑问钩子 → 报价差异 → 专业解释 → 免费报价表单。</b></div>
+          <div class="ai-summary-grid">
+            <div class="ai-summary-card"><span class="summary-icon">目</span><div><span>投放目标</span><b>表单获客</b><span>获取高意向装修用户表单</span></div></div>
+            <div class="ai-summary-card"><span class="summary-icon">人</span><div><span>核心人群</span><b>新房业主</b><span>首装 / 老房翻新</span></div></div>
+            <div class="ai-summary-card"><span class="summary-icon">卖</span><div><span>主推卖点</span><b>透明报价</b><span>免费设计转化</span></div></div>
+            <div class="ai-summary-card"><span class="summary-icon">法</span><div><span>推荐打法</span><b>价格焦虑开头</b><span>报价单特写承接</span></div></div>
           </div>
+          <details class="detail-toggle">
+            <summary>查看 AI 分析详情</summary>
+            <div class="detail-body">
+              <div class="analysis-grid">
+                <div class="analysis-card">
+                  <h4>目标拆解</h4>
+                  <p><strong>表单获客</strong>不是直接成交，素材应降低用户咨询门槛。建议把转化动作收敛成“免费获取装修报价”，避免同时塞入太多服务卖点。</p>
+                </div>
+                <div class="analysis-card">
+                  <h4>人群判断</h4>
+                  <p><strong>新房业主、首次装修、老房翻新</strong>共同焦虑是预算不透明。比起品牌介绍，更适合用报价差异、漏项、后期加钱制造代入感。</p>
+                </div>
+                <div class="analysis-card">
+                  <h4>平台策略</h4>
+                  <p><strong>抖音 15 秒</strong>需要前 3 秒给冲突。建议开头直接抛问题：“装修报价为什么差这么多？”随后用报价单特写承接。</p>
+                </div>
+                <div class="analysis-card">
+                  <h4>风险约束</h4>
+                  <p>需求单要求不夸大承诺、不低价诱导，因此脚本应强调“根据户型和材料拆预算”，避免出现绝对低价或保证省钱表达。</p>
+                </div>
+              </div>
+              <div class="sub-title">素材判断</div>
+              <div class="strategy-list">
+                <div class="strategy-row"><span>主卖点</span><b>透明报价优先，免费设计作为转化引导，不作为开头主钩子。</b></div>
+                <div class="strategy-row"><span>画面证据</span><b>报价单对比、红圈标注、设计师讲解户型图，比纯口播更能支撑可信度。</b></div>
+                <div class="strategy-row"><span>脚本结构</span><b>疑问钩子 → 报价差异 → 专业解释 → 免费报价表单。</b></div>
+              </div>
+            </div>
+          </details>
           <div class="actions"><button class="btn btn-primary" onclick="confirmStrategy(this)">确认策略，生成方向</button><button class="btn btn-outline" onclick="showPage('create')">编辑需求</button></div>
         </div>
         <div id="directionLoading" class="card panel ai-loading hide">
@@ -396,8 +454,8 @@
         </div>
         <div id="directionPanel" class="card panel hide">
           <h2 class="section-title">选择素材方向</h2>
-          <div class="direction-card active" onclick="selectDirection(this)"><span class="score">推荐 92</span><h4>价格焦虑型</h4><p>用“同一套房三份报价差很多”做开头冲突，承接免费报价表单。适合表单获客，因为用户会自然想知道自己家预算。</p></div>
-          <div class="direction-card" onclick="selectDirection(this)"><span class="score">推荐 88</span><h4>避坑科普型</h4><p>从漏项、少报、后期加钱切入，突出专业可信。适合预算较高或老房翻新人群，但前 3 秒冲突弱于报价差异。</p></div>
+          <div class="direction-card active" onclick="selectDirection(this)"><span class="score">62% 同类用户选择</span><h4>价格焦虑型</h4><p>用“同一套房三份报价差很多”做开头冲突，承接免费报价表单。适合表单获客，因为用户会自然想知道自己家预算。</p></div>
+          <div class="direction-card" onclick="selectDirection(this)"><span class="score">31% 同类用户选择</span><h4>避坑科普型</h4><p>从漏项、少报、后期加钱切入，突出专业可信。适合预算较高或老房翻新人群，但前 3 秒冲突弱于报价差异。</p></div>
           <div class="compact-list" style="margin-top:16px">
             <div class="compact-row"><span>已选方向</span><b id="selectedDirection">价格焦虑型</b></div>
             <div class="compact-row"><span>选择原因</span><b>最贴合“表单获客 + 15 秒 + 抖音”的组合，开头冲突强，转化动作顺。</b></div>
@@ -426,21 +484,7 @@
             <div><i class="spinner"></i><b>AI 正在生成分镜脚本</b><span>根据素材方向拆解镜头、字幕、旁白和视觉提示。</span></div>
           </div>
           <div id="scriptList" class="script-summary"></div>
-          <div class="actions"><button class="btn btn-primary" onclick="setStep(2)">确认脚本，进入生产</button><button class="btn btn-outline" onclick="generateScript(this)">重新生成整版脚本</button></div>
-          <div class="phase-note">分镜脚本会直接转成镜头视频任务；旁白和字幕可随视频生成，也可作为独立音频/字幕任务单独生成。</div>
-        </div>
-      </div>
-
-      <div id="step2" class="step-page script-stage hide">
-        <div class="card panel">
-          <h2 class="section-title">素材生产</h2>
-          <div class="mode-grid">
-            <div class="mode-card" onclick="selectMode('fast', this)"><h4>快速成片</h4><p>按分镜直接生成一段段视频，声音和字幕可随视频模型一起生成，适合快速看效果。</p></div>
-            <div class="mode-card active" onclick="selectMode('polish', this)"><h4>投放精修</h4><p>镜头视频、全片旁白、字幕文件分开生成，最后统一合成，适合广告投放时控制音色、字幕样式和多版本修改。</p></div>
-          </div>
-          <div class="table-wrap"><table class="task-table" id="taskTable"><thead><tr><th>任务</th><th>来源</th><th>类型</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table></div>
-          <div class="actions"><button class="btn btn-primary" onclick="batchGenerate(this)">批量生成素材</button><button class="btn btn-primary" onclick="composeVideo(this)">合成广告视频</button></div>
-          <div class="phase-note" id="modeNote">当前默认使用投放精修。若视频模型已生成满意的声音和字幕，可跳过独立音频或字幕任务。</div>
+          <div class="actions"><button class="btn btn-primary" onclick="composeVideo(this)">一键成片</button><button class="btn btn-outline" onclick="notify('已提交精修服务咨询，齐家运营团队将联系您')">联系精修服务</button></div>
         </div>
       </div>
 
@@ -452,7 +496,7 @@
         <div class="card panel">
           <h2 class="section-title">成片信息</h2>
           <div class="summary-grid"><div class="summary-item"><span>平台 / 比例</span><b>抖音 · 9:16</b></div><div class="summary-item"><span>时长 / 目标</span><b>15 秒 · 表单获客</b></div><div class="summary-item"><span>素材标签</span><b>价格焦虑 / 报价单特写</b></div><div class="summary-item"><span>交付物</span><b>视频、脚本、素材包、标签</b></div></div>
-          <div class="actions"><button class="btn btn-primary" onclick="notify('成片已加入下载队列')">下载成片</button><button class="btn btn-primary" onclick="setStep(4)">创建投放计划</button></div>
+          <div class="actions"><button class="btn btn-primary" onclick="notify('成片已加入下载队列')">下载成片</button><button class="btn btn-primary" onclick="setStep(3)">创建投放计划</button></div>
         </div>
       </div>
 
@@ -491,7 +535,7 @@
             <h4>AI 复盘判断</h4>
             <p>价格焦虑钩子有效，报价单特写带来较高点击；但后半段“免费设计”承接偏弱，评论中多次出现“报价准不准”“会不会后期加钱”。建议第二版保留报价差异开头，强化“按户型拆预算”和“漏项对比”证据。</p>
           </div>
-          <div class="actions"><button class="btn btn-primary" onclick="setStep(5)">基于复盘生成新方向</button></div>
+          <div class="actions"><button class="btn btn-primary" onclick="setStep(4)">基于复盘生成新方向</button></div>
         </div>
       </div>
 
@@ -500,27 +544,27 @@
           <h2 class="section-title">复盘生成新版本</h2>
           <div class="comparison-grid" id="versionCompare"></div>
           <div class="review-result">
-            <h4>AI 推荐下一轮方向</h4>
-            <p>系统根据投放监控结果、评论疑问和线索成本变化，给出下一版可测试的素材方向。选择一个方向后，会在当前项目下生成新的版本。</p>
+            <h4>下一轮可选方向</h4>
+            <p>系统根据投放监控结果、评论疑问和同类项目选择情况，给出下一版可测试的素材方向。选择一个方向后，会在当前项目下生成新的版本。</p>
             <div class="table-wrap review-table">
               <table class="task-table">
-                <thead><tr><th>推荐方向</th><th>推荐原因</th><th>适合验证的问题</th><th>操作</th></tr></thead>
+                <thead><tr><th>可选方向</th><th>同类项目选择</th><th>适合验证的问题</th><th>操作</th></tr></thead>
                 <tbody>
                   <tr>
                     <td><b>报价避坑型</b><small>承接 V1 的价格焦虑</small></td>
-                    <td>评论中关注报价准不准、会不会后期加钱，适合强化漏项和材料差异解释。</td>
+                    <td>62% 同类家装获客项目选择。评论中关注报价准不准、会不会后期加钱，适合强化漏项和材料差异解释。</td>
                     <td>用户是否更愿意留下户型信息获取详细报价。</td>
                     <td><button class="btn btn-mini btn-primary" onclick="createVersionFromReview(this,'报价避坑型','报价差异来自漏项、材料和施工项')">生成 V2</button></td>
                   </tr>
                   <tr>
                     <td><b>合同避坑型</b><small>从报价延伸到签约风险</small></td>
-                    <td>保留装修焦虑，但把重点放到合同漏项、增项条款和预算不可控，能提高咨询意愿。</td>
+                    <td>31% 同类家装获客项目选择。保留装修焦虑，但把重点放到合同漏项、增项条款和预算不可控，能提高咨询意愿。</td>
                     <td>用户是否从“看报价”升级为“想要专业把关”。</td>
                     <td><button class="btn btn-mini btn-outline" onclick="createVersionFromReview(this,'合同避坑型','装修合同漏项和增项条款容易导致预算失控')">生成 V2</button></td>
                   </tr>
                   <tr>
                     <td><b>老房翻新案例型</b><small>强化真实案例和信任感</small></td>
-                    <td>当前素材点击不错但信任承接偏弱，可以用老房翻新前后变化和真实预算拆解增强可信度。</td>
+                    <td>18% 同类家装获客项目选择。当前素材点击不错但信任承接偏弱，可以用老房翻新前后变化和真实预算拆解增强可信度。</td>
                     <td>用户是否更相信真实案例，而不只是价格钩子。</td>
                     <td><button class="btn btn-mini btn-outline" onclick="createVersionFromReview(this,'老房翻新案例型','用真实翻新案例和预算拆解建立信任')">生成 V2</button></td>
                   </tr>
@@ -528,7 +572,7 @@
               </table>
             </div>
           </div>
-          <div class="actions"><button class="btn btn-outline" onclick="setStep(4)">返回监控结果</button></div>
+          <div class="actions"><button class="btn btn-outline" onclick="setStep(3)">返回监控结果</button></div>
         </div>
       </div>
     </section>
@@ -572,7 +616,7 @@
   function renderVersions(){
     document.getElementById('versionStrip').innerHTML=versions.map((v,i)=>`<button class="version-card ${i===activeVersion?'active':''}" onclick="switchVersion(${i})"><b>${v.name}</b><span>${v.direction} · ${v.source}</span><small>${v.status}</small></button>`).join('');
     const current=versions[activeVersion];
-    document.getElementById('versionMeta').textContent=`当前版本：${current.name}　来源：${current.source}　状态：${current.status}`;
+    document.getElementById('versionMeta').textContent=`当前版本：${current.name}　来源：${current.source}　状态：${current.status}　更新时间：2024-05-13 14:30`;
     const monitorName=document.getElementById('monitorVersionName');
     if(monitorName) monitorName.textContent=current.name;
     renderLaunchStatus();
@@ -685,6 +729,18 @@
     clearTimeout(window.toastTimer);
     window.toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
   }
+  function startVoiceInput(btn){
+    const stop=setButtonLoading(btn,'录音中');
+    setTimeout(()=>{
+      stop();
+      notify('语音已识别并补充到需求中');
+    },900);
+  }
+  function handleUpload(input, type){
+    const file=input.files&&input.files[0];
+    if(!file) return;
+    notify(`${type}已上传：${file.name}`);
+  }
   function createProject(btn){
     const stop=setButtonLoading(btn,'AI 生成中');
     setTimeout(()=>{
@@ -709,20 +765,10 @@
     ['可选：全片旁白音频','分镜脚本｜旁白文案','独立音频','wait','待生成'],
     ['可选：字幕文件','分镜脚本｜字幕文案','独立字幕','wait','待生成']
   ];
-  let productionMode='polish';
   function renderTasks(){
-    const rows=productionMode==='fast' ? taskRows.filter((_,i)=>![3,4].includes(i)) : taskRows;
-    document.querySelector('#taskTable tbody').innerHTML=rows.map((r)=>{const i=taskRows.indexOf(r);return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="status ${r[3]}">${r[4]}</span></td><td><button class="btn btn-mini btn-outline" onclick="generateTask(${i}, this)">生成</button> <button class="btn btn-mini btn-outline" onclick="openAssetDrawer(${i})">查看素材</button></td></tr>`}).join('');
-  }
-  function selectMode(mode, el){
-    productionMode=mode;
-    document.querySelectorAll('.mode-card').forEach(card=>card.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('modeNote').textContent=mode==='fast'
-      ? '当前使用快速成片：独立音频和字幕任务会被跳过，声音和字幕随镜头视频一起生成。'
-      : '当前使用投放精修：独立生成全片旁白和字幕，便于控制音色、字幕样式和多版本修改。';
-    renderTasks();
-    notify(mode==='fast'?'已切换为快速成片':'已切换为投放精修');
+    const taskBody=document.querySelector('#taskTable tbody');
+    if(!taskBody) return;
+    taskBody.innerHTML=taskRows.map((r,i)=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="status ${r[3]}">${r[4]}</span></td><td><button class="btn btn-mini btn-outline" onclick="generateTask(${i}, this)">生成</button> <button class="btn btn-mini btn-outline" onclick="openAssetDrawer(${i})">查看素材</button></td></tr>`).join('');
   }
   function generateMoreDirections(btn){
     const stop=setButtonLoading(btn,'AI 生成中');
@@ -734,7 +780,7 @@
         extra.className='direction-card';
         extra.setAttribute('data-extra-direction','true');
         extra.setAttribute('onclick','selectDirection(this)');
-        extra.innerHTML='<span class="score">推荐 83</span><h4>真实案例型</h4><p>用老房翻新前后对比强调结果感，适合品牌信任和案例种草；但对“表单获客”的即时转化刺激弱于报价焦虑。</p>';
+        extra.innerHTML='<span class="score">18% 同类用户选择</span><h4>真实案例型</h4><p>用老房翻新前后对比强调结果感，适合品牌信任和案例种草；但对“表单获客”的即时转化刺激弱于报价焦虑。</p>';
         panel.insertBefore(extra,panel.querySelector('.compact-list'));
       }
       notify('已生成更多素材方向');
@@ -781,8 +827,8 @@
       stop();
       taskRows.forEach((r,i)=>{if(i<5){r[3]=i<2?'done':'doing';r[4]=i<2?'已完成':'生成中';}});
       renderTasks();
-      notify('已批量发起素材生成，2 个任务完成');
-      setTimeout(()=>setStep(2),450);
+      notify('已按分镜批量生成视频素材');
+      setTimeout(()=>setStep(1),450);
     },650);
   }
   function composeVideo(btn){
@@ -794,7 +840,7 @@
       renderVersions();
       renderTasks();
       notify('广告视频已合成，进入成片输出');
-      setStep(3);
+      setStep(2);
     },900);
   }
   function runMonitor(btn){
