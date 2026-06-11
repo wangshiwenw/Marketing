@@ -1,0 +1,61 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and runtime files
+/logs/
+/marketingBE/logs/
+/marketingBE/**/logs/
+*.log
+*.log.gz
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+bun-debug.log*
+
+# Local secrets
+.env
+.env.*
+!.env.example
+!.env.example.*
+!.env.sample
+!.env.sample.*
+/marketingFE/.env
+/marketingFE/.env.*
+!/marketingFE/.env.example
+!/marketingFE/.env.example.*
+!/marketingFE/.env.sample
+!/marketingFE/.env.sample.*
+*.pem
+
+# marketingFE: Next.js/Bun output
+/marketingFE/node_modules/
+/marketingFE/.pnp/
+/marketingFE/.pnp.*
+/marketingFE/.next/
+/marketingFE/out/
+/marketingFE/build/
+/marketingFE/dist/
+/marketingFE/coverage/
+/marketingFE/.turbo/
+/marketingFE/.vercel/
+/marketingFE/.clerk/
+/marketingFE/*.tsbuildinfo
+/marketingFE/next-env.d.ts
+
+# marketingBE: RuoYi Maven output
+/marketingBE/**/target/
+/marketingBE/.gradle/
+/marketingBE/.mvn/timing.properties
+/marketingBE/**/.flattened-pom.xml
+
+# Runtime temp files
+/tmp/
+/temp/
+/marketingBE/tmp/
+/marketingBE/temp/
+/marketingBE/**/tmp/
+/marketingBE/**/temp/
+*.tmp
+*.swp
+*.swo

@@ -21,6 +21,16 @@ function submitHomePrompt(btn){
   createProject(btn);
 }
 
+function toggleHomeCases(btn){
+  const section=document.querySelector('.home-cases');
+  const hero=document.querySelector('.home-hero');
+  if(!section||!btn) return;
+  const collapsed=section.classList.toggle('is-collapsed');
+  if(hero) hero.classList.toggle('cases-collapsed',collapsed);
+  btn.textContent=collapsed?'展开':'收起';
+  btn.setAttribute('aria-expanded',String(!collapsed));
+}
+
 function renderAuth(isLoggedIn){
   const auth=document.getElementById('homeAuth');
   if(!auth) return;

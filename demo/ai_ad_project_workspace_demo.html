@@ -335,6 +335,43 @@
             <button type="button" class="home-tool" onclick="fillHomeExample()">示例需求</button>
           </div>
           <button type="button" class="home-generate" onclick="submitHomePrompt(this)">✦ AI生成营销方案</button>
+          <section class="home-cases" aria-labelledby="homeCasesTitle">
+            <div class="home-cases-head">
+              <span class="case-spark" aria-hidden="true"></span>
+              <div>
+                <h2 id="homeCasesTitle">家装成功案例</h2>
+                <p>精选家装营销案例</p>
+              </div>
+              <span class="case-spark case-spark-right" aria-hidden="true"></span>
+              <button type="button" class="case-toggle" aria-expanded="true" aria-controls="homeCaseGrid" onclick="toggleHomeCases(this)">收起</button>
+            </div>
+            <div class="home-case-grid" id="homeCaseGrid">
+              <article class="home-case-card">
+                <img src="assets/qijia-shot-preview.png" alt="旧房翻新获客广告案例" />
+                <div class="home-case-copy">
+                  <h3><span class="case-icon">⌂</span>旧房翻新获客</h3>
+                  <p>面向首次装修与旧房改造用户，AI生成15秒短视频素材与投放文案</p>
+                  <div class="case-metric"><span>表单转化率</span><strong>+32%</strong></div>
+                </div>
+              </article>
+              <article class="home-case-card">
+                <img src="assets/qijia-shot-preview.png" alt="全屋整装咨询广告案例" />
+                <div class="home-case-copy">
+                  <h3><span class="case-icon">⌂</span>全屋整装咨询</h3>
+                  <p>围绕整装套餐、设计风格与优惠权益，快速产出多版广告创意</p>
+                  <div class="case-metric"><span>咨询线索成本</span><strong>-27%</strong></div>
+                </div>
+              </article>
+              <article class="home-case-card">
+                <img src="assets/qijia-shot-preview.png" alt="厨卫局改引流广告案例" />
+                <div class="home-case-copy">
+                  <h3><span class="case-icon">⌂</span>厨卫局改引流</h3>
+                  <p>聚焦厨房卫生间改造需求，突出局改前后对比与限时福利</p>
+                  <div class="case-metric"><span>到店咨询量</span><strong>+41%</strong></div>
+                </div>
+              </article>
+            </div>
+          </section>
           <div class="home-flow" aria-label="AI广告生成流程">
             <span class="home-flow-step"><i>◎</i>理解需求</span><span class="home-flow-dot"></span>
             <span class="home-flow-step"><i>▤</i>生成方案</span><span class="home-flow-dot"></span>
