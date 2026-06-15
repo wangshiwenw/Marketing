@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>筑客通AI营销获客系统</title>
+  <title>筑客通AI营销系统</title>
   <style>
     :root{
       --bg:#f6f6f8;--panel:#fff;--ink:#202333;--muted:#7a8190;--line:#e8ebf0;
@@ -495,13 +495,13 @@
       .advanced-shot{padding:9px 10px}
     }
   </style>
-  <link rel="stylesheet" href="styles/home.css?v=20260613-case-library" />
+  <link rel="stylesheet" href="styles/home.css?v=20260615-floatbar2" />
 </head>
 <body>
 <div class="app home-mode">
   <main class="main">
     <header class="app-topnav">
-      <div class="home-brand"><img class="home-logo" src="assets/platform-logo.png" alt="" /><span>筑客通AI营销获客系统</span></div>
+      <div class="home-brand"><img class="home-logo" src="assets/platform-logo.png" alt="" /><span>筑客通AI营销系统</span></div>
       <nav class="home-nav" aria-label="主导航">
         <button type="button" class="active" data-page="home" onclick="showPage('home')">首页</button>
         <button type="button" data-page="dashboard" onclick="showPage('dashboard')">投放看板</button>
@@ -511,99 +511,300 @@
         <button type="button" class="auth-login" onclick="loginDemoUser()">登录</button>
       </div>
     </header>
+    <!-- 悬浮输入条 -->
+    <div class="hp-float-bar" id="hpFloatBar">
+      <button type="button" class="hp-add-btn" aria-label="上传素材">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <input type="text" class="hp-float-input" placeholder="输入想法、剧本或上传参考，制作家装获客视频…" oninput="document.getElementById('homePrompt').value=this.value" />
+      <button type="button" class="hp-send-btn" onclick="submitHomePrompt(this)" aria-label="生成方案">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+      </button>
+    </div>
+
     <section id="home" class="page home-page">
-      <div class="home-hero">
-        <div class="home-hero-inner">
-          <h1 class="home-title"><strong>AI</strong> 自动生成可投放的家装获客方案</h1>
-          <div class="home-search" role="search">
-            <span class="home-search-icon" aria-hidden="true">⌕</span>
-            <input id="homeSearch" type="search" aria-label="搜索案例、装修类型、获客目标、齐家网ID" placeholder="搜索案例、装修类型、获客目标、齐家网ID" />
-            <button type="button" onclick="searchHomeCases(this)">搜索</button>
-          </div>
-          <section class="home-cases" aria-label="家装爆款营销案例库">
-            <div class="home-case-filters" aria-label="案例筛选">
-              <div class="filter-row type-row"><button class="active" type="button">热门推荐</button><button type="button">AI短视频获客</button><button type="button">AI避坑科普</button><button type="button">AI案例种草</button><button type="button">AI报价引流</button><button type="button">AI同城投放</button><button type="button">AI直播获客</button><button type="button">AI私域转化</button></div>
-              <div class="filter-row metric-row"><span>按效果筛选</span><button class="active" type="button">咨询量提升</button><button type="button">线索成本降低</button><button type="button">表单转化率</button><button type="button">点击率提升</button></div>
-            </div>
-            <div class="home-case-grid" id="homeCaseGrid">
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="旧房翻新获客" data-case-channel="抖音短视频" data-case-desc="老房焕新改造，激发换新需求" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-living-room.png" alt="旧房翻新获客广告案例" />
-                <div class="home-case-copy">
-                  <h3>旧房翻新获客</h3>
-                  <p>老房焕新改造，激发换新需求</p>
-                  <div class="case-metric"><span>表单转化率</span><strong>+32%</strong></div>
-                  <small><em>旧房翻新</em><em>抖音短视频</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="全屋整装咨询" data-case-channel="巨量引擎" data-case-desc="一站式整装服务，提升咨询量" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-kitchen.png" alt="全屋整装咨询广告案例" />
-                <div class="home-case-copy">
-                  <h3>全屋整装咨询</h3>
-                  <p>一站式整装服务，提升咨询量</p>
-                  <div class="case-metric"><span>咨询量</span><strong>+41%</strong></div>
-                  <small><em>整装咨询</em><em>巨量引擎</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="厨卫局改引流" data-case-channel="抖音信息流" data-case-desc="局部改造焕新，精准引流到店" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-bathroom.png" alt="厨卫局改引流广告案例" />
-                <div class="home-case-copy">
-                  <h3>厨卫局改引流</h3>
-                  <p>局部改造焕新，精准引流到店</p>
-                  <div class="case-metric green"><span>线索成本</span><strong>-27%</strong></div>
-                  <small><em>厨卫局改</em><em>抖音信息流</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="二手房装修报价" data-case-channel="百度信息流" data-case-desc="精准报价工具，提升留资转化" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-living-room.png" alt="二手房装修报价广告案例" />
-                <div class="home-case-copy">
-                  <h3>二手房装修报价</h3>
-                  <p>精准报价工具，提升留资转化</p>
-                  <div class="case-metric"><span>表单转化率</span><strong>+39%</strong></div>
-                  <small><em>二手房装修</em><em>百度信息流</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="阳台改造引流" data-case-channel="微信朋友圈" data-case-desc="阳台空间升级，吸引兴趣用户" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-apartment.png" alt="阳台改造引流广告案例" />
-                <div class="home-case-copy">
-                  <h3>阳台改造引流</h3>
-                  <p>阳台空间升级，吸引兴趣用户</p>
-                  <div class="case-metric"><span>点击率</span><strong>+53%</strong></div>
-                  <small><em>阳台改造</em><em>微信朋友圈</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-              <article class="home-case-card" role="button" tabindex="0" data-case-name="小户型改造咨询" data-case-channel="小红书信息流" data-case-desc="小空间大改造，提升咨询量" onclick="selectHomeCase(this)" onkeydown="handleHomeCaseKey(event,this)">
-                <img src="assets/case-apartment.png" alt="小户型改造咨询广告案例" />
-                <div class="home-case-copy">
-                  <h3>小户型改造咨询</h3>
-                  <p>小空间大改造，提升咨询量</p>
-                  <div class="case-metric"><span>咨询量</span><strong>+48%</strong></div>
-                  <small><em>小户型改造</em><em>小红书信息流</em></small>
-                  <span class="case-action">生成同款方案</span>
-                </div>
-              </article>
-            </div>
-          </section>
-          <section class="home-convert" aria-label="匹配专属营销方案">
-            <div class="home-convert-copy">
-              <span class="convert-icon" aria-hidden="true"><img src="assets/marketing-target-icon.png" alt="" /></span>
-              <div>
-                <h2>齐家网老用户？</h2>
-                <p>输入齐家网ID，AI结合历史线索与获客目标，为你匹配专属营销方案。</p>
-              </div>
-            </div>
-            <div class="home-input-area">
-              <div class="home-prompt-wrap">
-                <input id="homePrompt" class="home-prompt" maxlength="10000" aria-label="齐家网ID或营销需求" placeholder="输入齐家网ID，例如：QJ-203918" />
-              </div>
-            </div>
-            <button type="button" class="home-generate" onclick="submitHomePrompt(this)">匹配专属方案</button>
-          </section>
+      <div class="hp-body">
+
+        <!-- ① 标题区 -->
+        <div class="hp-hero">
+          <h1 class="hp-title"><strong>AI</strong> 自动生成可投放的家装获客方案</h1>
+          <p class="hp-subtitle">一句话、一张图，制作专业家装营销视频与广告方案</p>
         </div>
+
+        <!-- ② 输入框 + 功能卡片 -->
+        <div class="hp-compose-row">
+          <div class="hp-compose-box">
+            <div class="hp-compose-input-row">
+              <button type="button" class="hp-add-btn" aria-label="上传素材">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <textarea id="homePrompt" class="hp-textarea" maxlength="10000" placeholder="描述你的制作想法。例如：上传一张案例图，并告诉我「用这张图帮我制作一个家装获客视频」"></textarea>
+              <button type="button" class="hp-send-btn" onclick="submitHomePrompt(this)" aria-label="生成方案">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </button>
+            </div>
+            <div class="hp-quick-links">
+              <button type="button" class="hp-quick-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                制作实体引流视频
+              </button>
+              <button type="button" class="hp-quick-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                制作商品主页视频
+              </button>
+              <button type="button" class="hp-quick-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                制作案例口播视频
+              </button>
+            </div>
+          </div>
+          <div class="hp-feat-card hp-feat-blue" onclick="openCreateFromScratch()">
+            <div class="hp-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span class="hp-feat-label">门店引流</span>
+            <button class="hp-feat-plus" aria-label="新建">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+          <div class="hp-feat-card hp-feat-blue" onclick="openCreateFromScratch()">
+            <div class="hp-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="hp-feat-label">爆款复刻</span>
+            <button class="hp-feat-plus" aria-label="新建">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ④ 数据统计栏 -->
+        <div class="hp-stats-bar">
+          <div class="hp-stat-item">
+            <strong>60w+</strong><span>高佣爆品</span>
+          </div>
+          <div class="hp-stat-divider"></div>
+          <div class="hp-stat-item">
+            <strong>50w+</strong><span>出单达人</span>
+          </div>
+          <div class="hp-stat-divider"></div>
+          <div class="hp-stat-item">
+            <strong>30w+</strong><span>合作商家</span>
+          </div>
+        </div>
+
+        <!-- ⑤ 案例视频画廊 -->
+        <div class="hp-gallery-section">
+          <!-- 平台筛选标签 -->
+          <div class="hp-gallery-filters">
+            <button class="hp-gf-btn active" type="button">全部平台</button>
+            <button class="hp-gf-btn" type="button">抖音爆款</button>
+            <button class="hp-gf-btn" type="button">小红书爆款</button>
+            <button class="hp-gf-btn" type="button">视频号爆款</button>
+            <button class="hp-gf-btn" type="button">快手爆款</button>
+          </div>
+          <div class="hp-gallery-grid">
+            <!-- 第一组 -->
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="旧房翻新获客" data-case-channel="抖音" data-case-desc="拒绝过度装修，入住后才知道的8个坑">
+              <img src="assets/case-living-room.png" alt="旧房翻新获客" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">拒绝过度装修<br/>入住后才知道的8个坑</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">86.3w</span>
+                <span class="hp-gc-leads">线索 892</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="全屋整装咨询" data-case-channel="抖音" data-case-desc="30秒看懂全屋定制，这样装省10万！">
+              <img src="assets/case-kitchen.png" alt="全屋整装咨询" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">30秒看懂全屋定制<br/>这样装省10万！</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">86.3w</span>
+                <span class="hp-gc-leads">线索 673</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="厨卫局改引流" data-case-channel="快手" data-case-desc="精装房改造，低预算也能逆袭">
+              <img src="assets/case-bathroom.png" alt="厨卫局改引流" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">精装房改造<br/>低预算也能逆袭</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-ks"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.5 2L2 8l10 14 10-14-4.5-6H6.5z"/></svg>快手</span>
+                <span class="hp-gc-views">72.1w</span>
+                <span class="hp-gc-leads">线索 512</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="二手房装修报价" data-case-channel="视频号" data-case-desc="卫生间这样设计，实用又好看">
+              <img src="assets/case-apartment.png" alt="卫生间设计" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">卫生间这样设计<br/>实用又好看</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-wx"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8.7 11.1c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm5.4 0c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm-2.7 4.5c2.5 0 4.6-1.6 5.2-3.7H6.2c.6 2.1 2.7 3.7 5.2 3.7zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/></svg>视频号</span>
+                <span class="hp-gc-views">63.8w</span>
+                <span class="hp-gc-leads">线索 438</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="小户型改造咨询" data-case-channel="抖音" data-case-desc="装修前必看！这5个细节别忽略">
+              <img src="assets/case-living-room.png" alt="装修细节" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">装修前必看！<br/>这5个细节别忽略</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">59.4w</span>
+                <span class="hp-gc-leads">线索 408</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <!-- 第二行 -->
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="老房改造获客" data-case-channel="抖音" data-case-desc="老房改造不花冤枉钱，这3步搞定">
+              <img src="assets/case-kitchen.png" alt="老房改造" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">老房改造不花冤枉钱<br/>这3步搞定</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">104.2w</span>
+                <span class="hp-gc-leads">线索 1043</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="轻奢风装修" data-case-channel="小红书" data-case-desc="100㎡轻奢风，预算20万怎么花">
+              <img src="assets/case-living-room.png" alt="轻奢风装修" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">100㎡轻奢风<br/>预算20万怎么花</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-wx"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8.7 11.1c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm5.4 0c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm-2.7 4.5c2.5 0 4.6-1.6 5.2-3.7H6.2c.6 2.1 2.7 3.7 5.2 3.7zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/></svg>视频号</span>
+                <span class="hp-gc-views">78.5w</span>
+                <span class="hp-gc-leads">线索 621</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="新房验收避坑" data-case-channel="抖音" data-case-desc="新房验收必看！这6个坑别踩">
+              <img src="assets/case-apartment.png" alt="新房验收" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">新房验收必看！<br/>这6个坑别踩</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">91.7w</span>
+                <span class="hp-gc-leads">线索 774</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="厨房改造" data-case-channel="快手" data-case-desc="厨房这样改，做饭变享受">
+              <img src="assets/case-bathroom.png" alt="厨房改造" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">厨房这样改<br/>做饭变享受</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-ks"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.5 2L2 8l10 14 10-14-4.5-6H6.5z"/></svg>快手</span>
+                <span class="hp-gc-views">55.9w</span>
+                <span class="hp-gc-leads">线索 389</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="全包装修省钱" data-case-channel="抖音" data-case-desc="全包装修怎么省钱？签合同前必看">
+              <img src="assets/case-kitchen.png" alt="全包装修" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">全包装修怎么省钱？<br/>签合同前必看</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">67.3w</span>
+                <span class="hp-gc-leads">线索 502</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <!-- 第三行 -->
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="旧房翻新改造" data-case-channel="抖音" data-case-desc="20年老房翻新，焕然一新只花12万">
+              <img src="assets/case-living-room.png" alt="旧房翻新" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">20年老房翻新<br/>焕然一新只花12万</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">103.2w</span>
+                <span class="hp-gc-leads">线索 918</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="北欧风卧室" data-case-channel="小红书" data-case-desc="北欧风卧室设计，治愈系空间">
+              <img src="assets/case-bedroom.png" alt="北欧风卧室" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">北欧风卧室设计<br/>治愈系空间</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-xhs"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>小红书</span>
+                <span class="hp-gc-views">44.6w</span>
+                <span class="hp-gc-leads">线索 331</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="儿童房改造" data-case-channel="抖音" data-case-desc="儿童房这样设计，孩子爱上学习">
+              <img src="assets/case-apartment.png" alt="儿童房改造" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">儿童房这样设计<br/>孩子爱上学习</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2H12v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a7 7 0 0 0-.79-.05 6.89 6.89 0 0 0-6.89 6.89 6.89 6.89 0 0 0 6.89 6.89 6.89 6.89 0 0 0 6.89-6.89V8.87a8.72 8.72 0 0 0 5.1 1.63V7c-.01 0-1.42.04-2.52-.31z"/></svg>抖音</span>
+                <span class="hp-gc-views">58.1w</span>
+                <span class="hp-gc-leads">线索 447</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="阳台改造" data-case-channel="视频号" data-case-desc="阳台变花园，闲置空间大升级">
+              <img src="assets/case-kitchen.png" alt="阳台改造" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">阳台变花园<br/>闲置空间大升级</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-wx"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8.7 11.1c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm5.4 0c.5 0 .9-.4.9-.9s-.4-.9-.9-.9-.9.4-.9.9.4.9.9.9zm-2.7 4.5c2.5 0 4.6-1.6 5.2-3.7H6.2c.6 2.1 2.7 3.7 5.2 3.7zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/></svg>视频号</span>
+                <span class="hp-gc-views">37.4w</span>
+                <span class="hp-gc-leads">线索 278</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+            <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="极简风格装修" data-case-channel="快手" data-case-desc="极简风不是便宜，是懂得取舍">
+              <img src="assets/case-bathroom.png" alt="极简风装修" />
+              <div class="hp-gc-overlay"></div>
+              <span class="hp-gc-hot">爆款</span>
+              <span class="hp-gc-play">▶▶</span>
+              <div class="hp-gc-title">极简风不是便宜<br/>是懂得取舍</div>
+              <div class="hp-gc-foot">
+                <span class="hp-gc-platform hp-gc-ks"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.5 2L2 8l10 14 10-14-4.5-6H6.5z"/></svg>快手</span>
+                <span class="hp-gc-views">49.8w</span>
+                <span class="hp-gc-leads">线索 356</span>
+              </div>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+            </article>
+          </div><!-- /hp-gallery-grid -->
+        </div><!-- /hp-gallery-section -->
+
       </div>
     </section>
 
@@ -1739,5 +1940,25 @@
   setStep(0);
 </script>
 <script src="scripts/home.js?v=20260613-case-library"></script>
+<script>
+(function(){
+  var bar = document.getElementById('hpFloatBar');
+  var composeBox = document.querySelector('.hp-compose-box');
+  if(!bar || !composeBox) return;
+  function check(){
+    var homeEl = document.getElementById('home');
+    var onHome = homeEl && !homeEl.classList.contains('hide');
+    var rect = composeBox.getBoundingClientRect();
+    // Show when compose box top has scrolled above 80px (entering nav zone)
+    var shouldShow = onHome && rect.top < 80;
+    shouldShow ? bar.classList.add('visible') : bar.classList.remove('visible');
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  document.addEventListener('scroll', check, {passive:true, capture:true});
+  // Fallback poll via setInterval for environments where scroll events are unreliable
+  setInterval(check, 100);
+  check();
+})();
+</script>
 </body>
 </html>
