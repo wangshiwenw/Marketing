@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# Local tool configs
+.claude/
+
 # Logs and runtime files
 /logs/
 /marketingBE/logs/
