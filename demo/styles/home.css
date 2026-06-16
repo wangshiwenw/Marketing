@@ -38,7 +38,7 @@
 .hp-subtitle{margin:0;font-size:clamp(14px,1.5vw,17px);color:#8a93a5;font-weight:850;letter-spacing:.1px}
 
 /* ── ② Compose row ── */
-.hp-compose-row{display:grid;grid-template-columns:minmax(0,1fr) 160px 160px;gap:14px;align-items:stretch;margin-bottom:clamp(40px,6vh,64px)}
+.hp-compose-row{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:stretch;margin-bottom:clamp(40px,6vh,64px)}
 
 /* Compose box */
 .hp-compose-box{background:#fff;border:1px solid #e2e6ed;border-radius:20px;box-shadow:0 8px 32px rgba(31,35,45,.07);display:flex;flex-direction:column;overflow:hidden}
@@ -66,6 +66,7 @@
   border:none;
   box-shadow:0 4px 20px rgba(255,48,41,.25);
   transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s ease}
+.hp-feat-card.is-hidden-for-later{display:none}
 .hp-feat-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 32px rgba(255,48,41,.18)}
 /* Decorative floating circle behind content */
 .hp-feat-card::before{
@@ -112,13 +113,6 @@
 .hp-feat-try{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);border-radius:999px;color:#fff;font-size:11px;font-weight:900;padding:5px 10px;white-space:nowrap;backdrop-filter:blur(6px)}
 .hp-feat-try svg{width:12px;height:12px}
 
-/* ── ④ Stats bar ── */
-.hp-stats-bar{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:clamp(24px,3.5vh,36px);padding:clamp(20px,3vh,32px) 0}
-.hp-stat-item{display:flex;align-items:baseline;gap:7px;padding:0 clamp(32px,4vw,60px)}
-.hp-stat-item strong{font-size:clamp(20px,2.2vw,26px);font-weight:950;color:#0d1019;letter-spacing:-.5px}
-.hp-stat-item span{font-size:clamp(13px,1.2vw,15px);color:#8a93a5;font-weight:850}
-.hp-stat-divider{width:1px;height:22px;background:#dde0e8;flex:0 0 1px}
-
 /* ── ⑤ Gallery ── */
 .hp-gallery-section{margin-top:0}
 .hp-gallery-filters{display:flex;align-items:center;gap:8px;margin-bottom:clamp(16px,2.4vh,24px);flex-wrap:wrap}
@@ -157,7 +151,8 @@
 .hp-gc-leads{margin-left:auto;color:#fff;font-size:11px;font-weight:950;background:rgba(255,255,255,.14);border-radius:5px;padding:2px 6px;backdrop-filter:blur(4px);white-space:nowrap;flex-shrink:0}
 
 /* Make-same button — shown on card hover */
-.hp-gc-make-btn{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);white-space:nowrap;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:13px;font-weight:950;padding:8px 22px;cursor:pointer;z-index:4;transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.hp-gc-make-btn{position:absolute;left:50%;bottom:40px;transform:translateX(-50%) translateY(8px);white-space:nowrap;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:13px;font-weight:950;padding:8px 22px;cursor:pointer;z-index:4;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.hp-gc:hover .hp-gc-make-btn,.hp-gc:focus-visible .hp-gc-make-btn,.hp-gc:focus-within .hp-gc-make-btn{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%)}
 .hp-gc-make-btn:hover{background:linear-gradient(135deg,#ff2a1f,#ff7a20);border-color:transparent;box-shadow:0 6px 20px rgba(255,42,31,.5);transform:translateX(-50%) scale(1.05)}
 
 /* ── Floating compose bar ── */
@@ -185,8 +180,6 @@
   .hp-title{font-size:clamp(24px,3.2vw,38px)}
   .hp-compose-row{grid-template-columns:minmax(0,1fr) 170px}
   .hp-gallery-grid{grid-template-columns:repeat(4,1fr)}
-  .hp-stat-item{padding:0 32px}
-  .hp-stat-item strong{font-size:20px}
 }
 
 /* 平板竖屏 ≤900px */
@@ -195,8 +188,6 @@
   .hp-feat-cards{flex-direction:row;gap:8px}
   .hp-feat-card{flex:1 1 0;min-height:64px}
   .hp-gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .hp-stats-bar{gap:0}
-  .hp-stat-item{padding:0 24px}
 }
 
 /* 手机横屏 / 大手机 ≤640px */
@@ -221,11 +212,6 @@
   .hp-feat-primary b{font-size:13px}
   .hp-feat-overlay b{font-size:13px}
   .hp-feat-try{font-size:11px;padding:3px 7px}
-
-  .hp-stats-bar{flex-wrap:wrap;gap:12px;justify-content:center;padding:12px 0}
-  .hp-stat-divider{display:none}
-  .hp-stat-item{padding:0 16px}
-  .hp-stat-item strong{font-size:18px}
 
   .hp-gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .hp-gc-title{font-size:13px;bottom:36px}
