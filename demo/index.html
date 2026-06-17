@@ -302,10 +302,8 @@
     .strategy-number{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:var(--brand-grad);color:#fff;font-size:12px;font-weight:950;box-shadow:0 8px 14px rgba(255,48,41,.16)}
     .strategy-summary-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
     .strategy-summary-card{height:auto;min-height:86px;border:1px solid #e5e9f0;border-radius:13px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 8px;gap:5px;transition:.18s ease}
-    .strategy-summary-card.active{border-color:var(--primary);background:linear-gradient(145deg,#fff7f5,#fff);box-shadow:0 10px 22px rgba(255,48,41,.1)}
     .strategy-summary-card span{color:#667085;font-size:12px;font-weight:900}
     .strategy-summary-card b{color:#111827;font-size:15px;line-height:1.28}
-    .strategy-summary-card.active b{color:var(--primary);font-size:17px}
     .strategy-icon{width:32px;height:32px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:#fff1f0;color:var(--primary)}
     .strategy-icon svg{width:19px;height:19px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .strategy-icon.orange{background:#fff2e8;color:#ff7a1a}
@@ -317,6 +315,7 @@
     .strategy-direction-grid .direction-card{display:block;text-align:left;height:auto;min-height:178px;margin:0;padding:14px 14px;border:1px solid #e5e9f0;border-radius:15px;background:#fff;box-shadow:none;overflow:visible}
     .strategy-direction-grid .direction-card.active{border-color:var(--primary);background:linear-gradient(145deg,#fff7f5,#fff);box-shadow:0 10px 22px rgba(255,48,41,.09)}
     .direction-card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+    .strategy-direction-grid .direction-card-head{margin-bottom:12px}
     .direction-radio{width:22px;height:22px;border-radius:999px;border:2px solid #cfd6e2;display:inline-flex;align-items:center;justify-content:center;color:#fff;flex:0 0 auto;margin-top:1px}
     .direction-radio svg{width:13px;height:13px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
     .direction-card.active .direction-radio{border-color:var(--primary);background:var(--primary)}
@@ -435,7 +434,7 @@
     .launch-plan-summary summary::-webkit-details-marker{display:none}
     .launch-plan-summary summary:after{content:"展开";float:right;color:#98a2b3;font-size:12px}
     .launch-plan-summary[open] summary:after{content:"收起"}
-    .launch-plan-summary-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;border-top:1px solid #edf0f4;padding:12px 14px}
+    .launch-plan-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-top:1px solid #edf0f4;padding:12px 14px}
     .launch-plan-summary-grid div{border-radius:10px;background:#fbfcfe;padding:9px 10px}
     .launch-plan-summary-grid span{display:block;color:#98a2b3;font-size:11px;font-weight:900;margin-bottom:4px}
     .launch-plan-summary-grid b{color:#172033;font-size:12px;font-weight:950}
@@ -489,17 +488,6 @@
     .ai-judge-item p{margin:0;color:#667085;font-size:13px;line-height:1.65;font-weight:850}
     .ai-judge-action{margin-top:12px;width:100%;justify-content:center}
     .review-generated-note{display:none;margin-top:12px;border:1px solid #d8f2e3;border-radius:12px;background:#f2fff7;color:#0a7b42;font-size:13px;font-weight:950;line-height:1.45;padding:10px 12px;text-align:center}
-    .material-summary-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
-    .material-summary-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-    .material-summary-head:before{content:"";width:4px;height:18px;border-radius:999px;background:var(--primary)}
-    .material-summary-head h3{margin:0;color:#172033;font-size:16px;line-height:1.2;font-weight:950}
-    .material-performance{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-    .material-performance div{position:relative;border:0;border-right:1px solid #edf0f4;border-radius:0;background:transparent;padding:4px 14px 4px 0}
-    .material-performance div:last-child{border-right:0}
-    .material-performance span{display:block;color:#667085;font-size:12px;font-weight:900;margin-bottom:6px}
-    .material-performance b{color:#172033;font-size:14px;font-weight:950;line-height:1.4}
-    .launch-bottom-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .launch-bottom-actions .btn-primary{min-width:190px}
     .comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
     .compare-card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px}
     .compare-card.active{border-color:var(--primary);box-shadow:inset 4px 0 0 var(--primary)}
@@ -629,12 +617,59 @@
     .asset-drawer.show{transform:translateX(0)}
     .drawer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
     .drawer-head h2{margin:0;font-size:20px}.drawer-head p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
-    .modal-mask{position:fixed;inset:0;background:rgba(15,23,42,.32);z-index:30;display:none;align-items:center;justify-content:center;padding:24px}
+    .modal-mask{position:fixed;inset:0;background:rgba(15,23,42,.46);z-index:30;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
     .modal-mask.show{display:flex}
-    .plan-modal{width:min(520px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 28px 70px rgba(15,23,42,.24);padding:24px}
-    .plan-modal h2{margin:0 0 18px;font-size:20px;line-height:1.3}
-    .plan-form{display:grid;gap:14px}
+    .plan-modal{width:min(560px,100%);background:#fff;border:1px solid rgba(226,232,240,.9);border-radius:18px;box-shadow:0 30px 80px rgba(15,23,42,.28);padding:26px 28px 24px}
+    .plan-modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .plan-modal h2{margin:0;font-size:21px;line-height:1.3;color:#172033;font-weight:950}
+    .plan-close{width:34px;height:34px;border:0;border-radius:999px;background:transparent;color:#667085;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .16s ease,color .16s ease}
+    .plan-close:hover{background:#f2f4f7;color:#172033}
+    .plan-close svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .plan-form{display:grid;gap:16px}
+    .plan-row{display:grid;grid-template-columns:86px minmax(0,1fr);align-items:center;gap:16px}
+    .plan-label{color:#344054;font-size:14px;font-weight:900;line-height:1.2}
+    .plan-control{height:42px;border:1px solid #e1e6ee;border-radius:10px;background:#fff;box-shadow:0 1px 0 rgba(15,23,42,.02);transition:border-color .16s ease,box-shadow .16s ease}
+    .plan-control:focus-within{border-color:#ffc9c4;box-shadow:0 0 0 3px rgba(255,48,41,.08)}
+    .plan-platform-select{position:relative;display:flex;align-items:center;gap:10px;padding:0 38px 0 12px}
+    .plan-platform-select select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+    .platform-logo{width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .platform-logo.douyin{background:#111827;color:#fff}
+    .platform-logo.xiaohongshu{background:#ff2442;color:#fff}
+    .platform-logo.video,.platform-logo.kuaishou{background:#fff1f0;color:var(--primary)}
+    .platform-logo svg{width:15px;height:15px;fill:currentColor}
+    .platform-name{color:#172033;font-size:14px;font-weight:900}
+    .select-chevron{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:#667085;pointer-events:none}
+    .select-chevron svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .budget-input-wrap{display:flex;align-items:center;padding:0 12px;gap:10px}
+    .budget-input-wrap input{min-width:0;flex:1;border:0;outline:0;color:#172033;font-size:14px;font-weight:900;background:transparent}
+    .budget-input-wrap input::-webkit-outer-spin-button,.budget-input-wrap input::-webkit-inner-spin-button,.plan-stepper input::-webkit-outer-spin-button,.plan-stepper input::-webkit-inner-spin-button{appearance:none;margin:0}
+    .budget-suffix{color:#667085;font-size:13px;font-weight:850;white-space:nowrap}
+    .plan-period-wrap{display:flex;align-items:center;gap:14px}
+    .plan-stepper{height:42px;width:178px;border:1px solid #e1e6ee;border-radius:10px;background:#fff;display:grid;grid-template-columns:46px 1fr 46px;overflow:hidden}
+    .plan-stepper button{border:0;background:#f8fafc;color:#253044;font-size:22px;line-height:1;cursor:pointer;transition:background .16s ease,color .16s ease}
+    .plan-stepper button:hover{background:#fff1f0;color:var(--primary)}
+    .plan-stepper input{border:0;border-left:1px solid #edf0f4;border-right:1px solid #edf0f4;text-align:center;outline:0;color:#172033;font-size:14px;font-weight:950;background:#fff}
+    .period-unit{color:#344054;font-size:14px;font-weight:900}
+    .plan-estimate{position:relative;margin-top:20px;min-height:70px;border:1px solid #ffe0dc;border-radius:12px;background:linear-gradient(100deg,#fff7f5 0%,#fff 64%,#fff0ed 100%);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;overflow:hidden}
+    .estimate-main{display:flex;align-items:baseline;gap:28px;min-width:0}
+    .estimate-label{color:#172033;font-size:14px;font-weight:950}
+    .estimate-price{color:var(--primary);font-size:30px;line-height:1;font-weight:950;letter-spacing:0}
+    .estimate-note{color:#98a2b3;font-size:12px;font-weight:850;white-space:nowrap}
+    .estimate-icon{position:absolute;right:16px;bottom:-10px;width:62px;height:62px;border-radius:16px;background:rgba(255,48,41,.08);color:rgba(255,48,41,.16);transform:rotate(10deg);display:flex;align-items:center;justify-content:center}
+    .estimate-icon svg{width:40px;height:40px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .plan-effect{margin-top:16px;border:1px solid #e6ebf1;border-radius:12px;background:#fff;padding:18px 20px}
+    .effect-layout{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:start}
+    .effect-title{color:#172033;font-size:14px;font-weight:950;padding-top:4px}
+    .effect-list{display:grid;gap:0}
+    .effect-row{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:center;min-height:40px;border-bottom:1px solid #edf0f4}
+    .effect-row:last-child{border-bottom:0}
+    .effect-icon{width:24px;height:24px;border-radius:999px;background:#fff1f0;color:var(--primary);display:inline-flex;align-items:center;justify-content:center}
+    .effect-icon svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .effect-copy{display:flex;align-items:center;gap:12px;color:#667085;font-size:13px;font-weight:850}
+    .effect-copy b{color:#172033;font-size:14px;font-weight:950}
+    .effect-note{margin:12px 0 0;text-align:center;color:#98a2b3;font-size:11px;font-weight:850;line-height:1.5}
     .plan-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px}
+    .plan-actions .btn{min-width:86px;height:42px;border-radius:10px}
     .media-preview{border:1px solid var(--line);border-radius:var(--radius);background:#101827;color:#fff;min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;margin-bottom:18px}
     .media-preview.audio{min-height:160px;background:linear-gradient(135deg,#172033,#2f6f62)}
     .media-preview.image{padding:0;background:#101827;overflow:hidden;min-height:auto;aspect-ratio:9/16}
@@ -686,18 +721,22 @@
       .current-shot-script{flex:0 1 auto;overflow:visible}
       .shot-preview-body{min-height:250px;flex:0 0 auto}
       .launch-draft-grid,.launch-monitor-layout{grid-template-columns:1fr}
-      .launch-status-strip,.launch-metrics,.material-performance,.launch-plan-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .material-summary-card{grid-template-columns:1fr}
+      .launch-status-strip,.launch-metrics,.launch-plan-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .launch-material-card{grid-template-columns:minmax(180px,220px) minmax(0,1fr)}
     }
     @media(max-width:720px){
-      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid,.monitor-grid,.compare-metrics,.ai-summary-grid,.launch-status-strip,.launch-metrics,.material-performance,.launch-plan-summary-grid{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}.workbench-head{align-items:stretch;flex-direction:column}.workbench-launch-wrap,.workbench-next{width:100%}.ai-video-workbench{padding:14px}.full-video-preview{min-height:300px}.shot-timeline{grid-auto-columns:174px}.shot-card{min-height:118px}.launch-workspace{padding:14px}.launch-material-card{grid-template-columns:1fr}.launch-preview-phone{height:320px}.launch-config-row{grid-template-columns:1fr}.launch-flow{gap:4px}.launch-flow-step{font-size:11px}.launch-bottom-actions .btn{width:100%}
+      .projects,.form-grid,.deliverables,.kpis,.loop,.summary-grid,.monitor-grid,.compare-metrics,.ai-summary-grid,.launch-status-strip,.launch-metrics,.launch-plan-summary-grid{grid-template-columns:1fr}.main{padding:16px}.topbar{flex-direction:column}.title h1{font-size:22px}.panel{padding:16px}.preview-phone{width:min(260px,100%);height:460px}.kv{grid-template-columns:104px 1fr}.chart-row{grid-template-columns:76px 1fr 46px}.script-row{grid-template-columns:1fr}.script-summary{max-height:none;overflow:visible}.workbench-head{align-items:stretch;flex-direction:column}.workbench-launch-wrap,.workbench-next{width:100%}.ai-video-workbench{padding:14px}.full-video-preview{min-height:300px}.shot-timeline{grid-auto-columns:174px}.shot-card{min-height:118px}.launch-workspace{padding:14px}.launch-material-card{grid-template-columns:1fr}.launch-preview-phone{height:320px}.launch-config-row{grid-template-columns:1fr}.launch-flow{gap:4px}.launch-flow-step{font-size:11px}
+      .strategy-direction-grid{grid-template-columns:1fr}
+      .strategy-direction-grid .direction-card{min-height:0}
+      .plan-modal{padding:22px;width:min(520px,100%)}
+      .plan-row,.effect-layout{grid-template-columns:1fr;gap:9px}
+      .plan-estimate{align-items:flex-start;flex-direction:column}
+      .estimate-note{white-space:normal}
+      .plan-actions .btn{flex:1}
     }
     @media(max-width:720px){
       .launch-status-item{border-right:0;border-bottom:1px solid #edf0f4}
       .launch-status-item:last-child{border-bottom:0}
-      .material-performance div{border-right:0;border-bottom:1px solid #edf0f4;padding:10px 0}
-      .material-performance div:last-child{border-bottom:0}
       .trend-range{width:100%;overflow-x:auto}
       .trend-range button{flex:0 0 auto}
     }
@@ -746,8 +785,7 @@
       .strategy-icon svg{width:17px;height:17px}
       .strategy-summary-card span{font-size:12px}
       .strategy-summary-card b{font-size:14px}
-      .strategy-summary-card.active b{font-size:16px}
-      .strategy-direction-grid .direction-card{min-height:160px;padding:12px}
+      .strategy-direction-grid .direction-card{min-height:0;padding:12px}
       .direction-tags{gap:6px;margin:10px -12px -12px;padding:10px 12px 12px}
       .direction-chip{font-size:11px}
       .direction-chip b{font-size:11px;padding:3px 6px}
@@ -779,7 +817,7 @@
       .advanced-shot{padding:9px 10px}
     }
   </style>
-  <link rel="stylesheet" href="styles/home.css?v=20260615-floatbar2" />
+  <link rel="stylesheet" href="styles/home.css?v=20260616-bg-light" />
 </head>
 <body>
 <div class="app home-mode">
@@ -811,7 +849,7 @@
 
         <!-- ① 标题区 -->
         <div class="hp-hero">
-          <h1 class="hp-title"><strong>AI</strong> 自动生成可投放的家装获客方案</h1>
+          <h1 class="hp-title"><strong class="ai-text">AI</strong> 自动生成可投放的家装获客方案</h1>
           <p class="hp-subtitle">一句话、一张图，制作专业家装营销视频与广告方案</p>
         </div>
 
@@ -822,21 +860,21 @@
               <button type="button" class="hp-add-btn" aria-label="上传素材">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               </button>
-              <textarea id="homePrompt" class="hp-textarea" maxlength="10000" placeholder="描述你的获客需求。例如：我要做老房翻新的抖音短视频投放，目标是获取装修报价表单，突出免费量房、透明报价和真实案例。"></textarea>
+              <textarea id="homePrompt" class="hp-textarea" maxlength="10000" placeholder="输入你的获客需求，例如：老房翻新，想做抖音投放，获取装修咨询"></textarea>
               <button type="button" class="hp-send-btn" onclick="submitHomePrompt(this)" aria-label="生成方案">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
               </button>
             </div>
             <div class="hp-quick-links">
-              <button type="button" class="hp-quick-link">
+              <button type="button" class="hp-quick-link" onclick="openCreateFromQuickTab('生成短视频获客方案')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
                 生成短视频获客方案
               </button>
-              <button type="button" class="hp-quick-link">
+              <button type="button" class="hp-quick-link" onclick="openCreateFromQuickTab('生成报价表单引流')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
                 生成报价表单引流
               </button>
-              <button type="button" class="hp-quick-link">
+              <button type="button" class="hp-quick-link" onclick="openCreateFromQuickTab('生成案例种草转化')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 生成案例种草转化
               </button>
@@ -875,7 +913,7 @@
           <div class="hp-gallery-grid">
             <!-- 第一组 -->
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="旧房翻新获客" data-case-channel="抖音" data-case-desc="拒绝过度装修，入住后才知道的8个坑">
-              <img src="assets/home-gallery-1.png" alt="旧房翻新获客" />
+              <video src="assets/home-case-video-1.mp4" poster="assets/home-gallery-1.png" autoplay muted loop playsinline preload="metadata" aria-label="旧房翻新获客视频"></video>
               <div class="hp-gc-overlay"></div>
               <span class="hp-gc-hot">爆款</span>
               <span class="hp-gc-play">▶▶</span>
@@ -885,10 +923,10 @@
                 <span class="hp-gc-views">86.3w</span>
                 <span class="hp-gc-leads">咨询量 +50%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="全屋整装咨询" data-case-channel="抖音" data-case-desc="30秒看懂全屋定制，这样装省10万！">
-              <img src="assets/home-gallery-2.png" alt="全屋整装咨询" />
+              <video src="assets/home-case-video-2.mp4" poster="assets/home-gallery-2.png" autoplay muted loop playsinline preload="metadata" aria-label="全屋整装咨询视频"></video>
               <div class="hp-gc-overlay"></div>
               <span class="hp-gc-hot">爆款</span>
               <span class="hp-gc-play">▶▶</span>
@@ -898,7 +936,7 @@
                 <span class="hp-gc-views">86.3w</span>
                 <span class="hp-gc-leads">咨询量 +43%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="厨卫局改引流" data-case-channel="快手" data-case-desc="精装房改造，低预算也能逆袭">
               <img src="assets/home-gallery-3.png" alt="厨卫局改引流" />
@@ -911,7 +949,7 @@
                 <span class="hp-gc-views">72.1w</span>
                 <span class="hp-gc-leads">咨询量 +38%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="二手房装修报价" data-case-channel="视频号" data-case-desc="卫生间这样设计，实用又好看">
               <img src="assets/home-gallery-3.png" alt="卫生间设计" />
@@ -924,10 +962,10 @@
                 <span class="hp-gc-views">63.8w</span>
                 <span class="hp-gc-leads">咨询量 +32%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="小户型改造咨询" data-case-channel="抖音" data-case-desc="装修前必看！这5个细节别忽略">
-              <img src="assets/home-gallery-5.png" alt="装修细节" />
+              <video src="assets/home-case-video-1.mp4" poster="assets/home-gallery-5.png" autoplay muted loop playsinline preload="metadata" aria-label="小户型改造咨询视频"></video>
               <div class="hp-gc-overlay"></div>
               <span class="hp-gc-hot">爆款</span>
               <span class="hp-gc-play">▶▶</span>
@@ -937,11 +975,11 @@
                 <span class="hp-gc-views">59.4w</span>
                 <span class="hp-gc-leads">咨询量 +35%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <!-- 第二行 -->
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="老房改造获客" data-case-channel="抖音" data-case-desc="老房改造不花冤枉钱，这3步搞定">
-              <img src="assets/home-gallery-1.png" alt="老房改造" />
+              <video src="assets/home-case-video-2.mp4" poster="assets/home-gallery-1.png" autoplay muted loop playsinline preload="metadata" aria-label="老房改造获客视频"></video>
               <div class="hp-gc-overlay"></div>
               <span class="hp-gc-hot">爆款</span>
               <span class="hp-gc-play">▶▶</span>
@@ -951,7 +989,7 @@
                 <span class="hp-gc-views">104.2w</span>
                 <span class="hp-gc-leads">咨询量 +58%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="轻奢风装修" data-case-channel="小红书" data-case-desc="100㎡轻奢风，预算20万怎么花">
               <img src="assets/home-gallery-6.png" alt="轻奢风装修" />
@@ -964,7 +1002,7 @@
                 <span class="hp-gc-views">78.5w</span>
                 <span class="hp-gc-leads">咨询量 +41%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="新房验收避坑" data-case-channel="抖音" data-case-desc="新房验收必看！这6个坑别踩">
               <img src="assets/home-gallery-5.png" alt="新房验收" />
@@ -977,7 +1015,7 @@
                 <span class="hp-gc-views">91.7w</span>
                 <span class="hp-gc-leads">咨询量 +46%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="厨房改造" data-case-channel="快手" data-case-desc="厨房这样改，做饭变享受">
               <img src="assets/home-gallery-2.png" alt="厨房改造" />
@@ -990,7 +1028,7 @@
                 <span class="hp-gc-views">55.9w</span>
                 <span class="hp-gc-leads">咨询量 +29%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="全包装修省钱" data-case-channel="抖音" data-case-desc="全包装修怎么省钱？签合同前必看">
               <img src="assets/home-gallery-4.png" alt="全包装修" />
@@ -1003,7 +1041,7 @@
                 <span class="hp-gc-views">67.3w</span>
                 <span class="hp-gc-leads">咨询量 +36%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <!-- 第三行 -->
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="旧房翻新改造" data-case-channel="抖音" data-case-desc="20年老房翻新，焕然一新只花12万">
@@ -1017,7 +1055,7 @@
                 <span class="hp-gc-views">103.2w</span>
                 <span class="hp-gc-leads">咨询量 +52%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="北欧风卧室" data-case-channel="小红书" data-case-desc="北欧风卧室设计，治愈系空间">
               <img src="assets/home-gallery-6.png" alt="北欧风卧室" />
@@ -1030,7 +1068,7 @@
                 <span class="hp-gc-views">44.6w</span>
                 <span class="hp-gc-leads">咨询量 +27%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="儿童房改造" data-case-channel="抖音" data-case-desc="儿童房这样设计，孩子爱上学习">
               <img src="assets/home-gallery-4.png" alt="儿童房改造" />
@@ -1043,7 +1081,7 @@
                 <span class="hp-gc-views">58.1w</span>
                 <span class="hp-gc-leads">咨询量 +34%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="阳台改造" data-case-channel="视频号" data-case-desc="阳台变花园，闲置空间大升级">
               <img src="assets/home-gallery-5.png" alt="阳台改造" />
@@ -1056,7 +1094,7 @@
                 <span class="hp-gc-views">37.4w</span>
                 <span class="hp-gc-leads">咨询量 +24%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
             <article class="hp-gc" role="button" tabindex="0" onclick="selectHomeCase(this)" data-case-name="极简风格装修" data-case-channel="快手" data-case-desc="极简风不是便宜，是懂得取舍">
               <img src="assets/home-gallery-3.png" alt="极简风装修" />
@@ -1069,7 +1107,7 @@
                 <span class="hp-gc-views">49.8w</span>
                 <span class="hp-gc-leads">咨询量 +31%</span>
               </div>
-              <button class="hp-gc-make-btn" onclick="event.stopPropagation();navigateTo('create')">制作同款</button>
+              <button class="hp-gc-make-btn" onclick="event.stopPropagation();selectHomeCase(this.closest('.hp-gc'))">制作同款</button>
             </article>
           </div><!-- /hp-gallery-grid -->
         </div><!-- /hp-gallery-section -->
@@ -1157,7 +1195,7 @@
           <select class="project-filter" aria-label="项目筛选"><option>全部项目</option><option>生产中</option><option>待投放</option><option>已完成</option></select>
           <input class="project-search" aria-label="搜索项目" placeholder="搜索项目名称、行业、负责人" />
         </div>
-        <select class="project-sort" aria-label="排序方式"><option>最近更新</option><option>项目进度</option><option>线索成本</option></select>
+        <select class="project-sort" aria-label="排序方式"><option>最近更新</option><option>项目进度</option><option>咨询量</option></select>
       </div>
       <div class="grid projects">
         <div class="card project-card">
@@ -1168,13 +1206,13 @@
           </div>
           <div class="project-title">齐家网·老房翻新获客视频</div>
           <div class="project-hero-metrics">
-            <div class="project-hero-metric is-muted"><span>获客线索</span><b>待投</b></div>
+            <div class="project-hero-metric is-muted"><span>咨询量</span><b>待投</b></div>
             <div class="project-hero-metric is-muted"><span>播放量</span><b>待投</b></div>
           </div>
           <div class="project-mini-metrics">
-            <div class="project-mini-metric"><span>线索成本</span><b>--</b></div>
-            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
             <div class="project-mini-metric"><span>消耗</span><b>--</b></div>
+            <div class="project-mini-metric"><span>预定单</span><b>--</b></div>
+            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
           </div>
           <div class="progress"><div class="bar" style="width:58%"></div></div>
           <div class="project-state"><span class="project-dot">当前：脚本与成片</span><span>待进入生产</span></div>
@@ -1188,13 +1226,13 @@
           </div>
           <div class="project-title">齐家网·免费报价短视频</div>
           <div class="project-hero-metrics">
-            <div class="project-hero-metric is-muted"><span>获客线索</span><b>待合</b></div>
+            <div class="project-hero-metric is-muted"><span>咨询量</span><b>待合</b></div>
             <div class="project-hero-metric is-muted"><span>播放量</span><b>待投</b></div>
           </div>
           <div class="project-mini-metrics">
-            <div class="project-mini-metric"><span>线索成本</span><b>--</b></div>
-            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
             <div class="project-mini-metric"><span>消耗</span><b>--</b></div>
+            <div class="project-mini-metric"><span>预定单</span><b>--</b></div>
+            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
           </div>
           <div class="progress"><div class="bar" style="width:66%"></div></div>
           <div class="project-state"><span class="project-dot">当前：脚本与成片</span><span>待合成</span></div>
@@ -1207,13 +1245,13 @@
           </div>
           <div class="project-title">整装套餐·品牌信任素材</div>
           <div class="project-hero-metrics">
-            <div class="project-hero-metric"><span>获客线索</span><b>126</b></div>
+            <div class="project-hero-metric"><span>咨询量</span><b>126</b></div>
             <div class="project-hero-metric"><span>播放量</span><b>8.6w</b></div>
           </div>
           <div class="project-mini-metrics">
-            <div class="project-mini-metric"><span>线索成本</span><b>¥41</b></div>
-            <div class="project-mini-metric"><span>点击率</span><b>3.8%</b></div>
             <div class="project-mini-metric"><span>消耗</span><b>¥5,740</b></div>
+            <div class="project-mini-metric"><span>预定单</span><b>18</b></div>
+            <div class="project-mini-metric"><span>点击率</span><b>3.8%</b></div>
           </div>
           <div class="progress"><div class="bar" style="width:100%"></div></div>
           <div class="project-state"><span class="project-dot green">当前：复盘迭代</span><button type="button" onclick="openProjectAtStep(4,'整装套餐·品牌信任素材')">可查看详情 ›</button></div>
@@ -1227,13 +1265,13 @@
           </div>
           <div class="project-title">局部翻新·避坑指南素材</div>
           <div class="project-hero-metrics">
-            <div class="project-hero-metric is-muted"><span>获客线索</span><b>待投</b></div>
+            <div class="project-hero-metric is-muted"><span>咨询量</span><b>待投</b></div>
             <div class="project-hero-metric is-muted"><span>播放量</span><b>待投</b></div>
           </div>
           <div class="project-mini-metrics">
-            <div class="project-mini-metric"><span>线索成本</span><b>--</b></div>
-            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
             <div class="project-mini-metric"><span>消耗</span><b>--</b></div>
+            <div class="project-mini-metric"><span>预定单</span><b>--</b></div>
+            <div class="project-mini-metric"><span>点击率</span><b>--</b></div>
           </div>
           <div class="progress"><div class="bar" style="width:50%"></div></div>
           <div class="project-state"><span class="project-dot">当前：脚本与成片</span><span>待生成素材</span></div>
@@ -1247,13 +1285,13 @@
           </div>
           <div class="project-title">旧房改造·前后对比视频</div>
           <div class="project-hero-metrics">
-            <div class="project-hero-metric"><span>获客线索</span><b>84</b></div>
+            <div class="project-hero-metric"><span>咨询量</span><b>84</b></div>
             <div class="project-hero-metric"><span>播放量</span><b>6.1w</b></div>
           </div>
           <div class="project-mini-metrics">
-            <div class="project-mini-metric"><span>线索成本</span><b>¥62</b></div>
-            <div class="project-mini-metric"><span>点击率</span><b>2.1%</b></div>
             <div class="project-mini-metric"><span>消耗</span><b>¥5,208</b></div>
+            <div class="project-mini-metric"><span>预定单</span><b>9</b></div>
+            <div class="project-mini-metric"><span>点击率</span><b>2.1%</b></div>
           </div>
           <div class="progress"><div class="bar" style="width:82%"></div></div>
           <div class="project-state"><span class="project-dot">当前：投放与监控</span><span>待复盘</span></div>
@@ -1352,7 +1390,7 @@
             <section class="strategy-section" aria-labelledby="strategySummaryTitle">
               <h3 class="strategy-section-title" id="strategySummaryTitle"><span class="strategy-number">1</span>本次投放策略</h3>
               <div class="strategy-summary-grid">
-                <div class="strategy-summary-card active">
+                <div class="strategy-summary-card">
                   <span class="strategy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path></svg></span>
                   <span>目标</span>
                   <b>表单获客</b>
@@ -1439,6 +1477,7 @@
               <button class="btn btn-primary" onclick="generateScriptFromDirection(this)">确认策略，生成脚本</button>
               <button class="btn btn-outline" onclick="showPage('create')">编辑需求</button>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -1555,7 +1594,7 @@
             <div class="launch-page-head">
               <div>
                 <h2>投放确认</h2>
-                <p>确认投放素材、预算与监控目标，提交后将进入平台审核</p>
+                <p>确认投放素材与预算，提交后将进入平台审核</p>
               </div>
             </div>
 
@@ -1584,10 +1623,9 @@
                 <div class="launch-config-list">
                   <div class="launch-config-row"><span>投放平台</span><b id="launchPlatformText">抖音信息流</b></div>
                   <div class="launch-config-row"><span>投放目标</span><b>表单获客</b></div>
-                  <div class="launch-config-row"><span>投放预算</span><b id="launchBudgetText">3000 元/天</b></div>
-                  <div class="launch-config-row"><span>投放周期</span><b id="launchScheduleText">06-08 18:00 - 06-10 18:00</b></div>
+                  <div class="launch-config-row"><span>投放预算</span><b id="launchBudgetText">300 元/天</b></div>
+                  <div class="launch-config-row"><span>投放周期</span><b id="launchScheduleText">投放 3 天</b></div>
                   <div class="launch-config-row"><span>目标人群</span><b>25-45 岁｜本地装修业主</b></div>
-                  <div class="launch-config-row"><span>监控目标</span><b>表单成本低于 45 元</b></div>
                   <div class="launch-config-row"><span>平台审核</span><b id="launchStatusText">尚未提交</b></div>
                 </div>
                 <div class="launch-config-actions">
@@ -1639,9 +1677,8 @@
               <div class="launch-plan-summary-grid">
                 <div><span>投放版本</span><b>V1 初版</b></div>
                 <div><span>投放平台</span><b id="summaryLaunchPlatformText">抖音信息流</b></div>
-                <div><span>投放预算</span><b id="summaryLaunchBudgetText">3000 元/天</b></div>
-                <div><span>投放周期</span><b id="summaryLaunchScheduleText">06-08 18:00 - 06-10 18:00</b></div>
-                <div><span>监控目标</span><b>表单成本低于 45 元</b></div>
+                <div><span>投放预算</span><b id="summaryLaunchBudgetText">300 元/天</b></div>
+                <div><span>投放周期</span><b id="summaryLaunchScheduleText">投放 3 天</b></div>
               </div>
             </details>
 
@@ -1655,12 +1692,12 @@
                 <div><span>点击率</span><b>3.8%</b><small><i class="metric-arrow">▲</i>高于项目均值 0.6%</small></div>
               </div>
               <div class="launch-metric-card">
-                <i class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path><path d="M9 16h4"></path></svg></i>
-                <div><span>表单数</span><b>126</b><small><i class="metric-arrow">▲</i>近3小时持续增长</small></div>
+                <i class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8"></path><path d="M8 13h5"></path></svg></i>
+                <div><span>咨询量</span><b>126</b><small><i class="metric-arrow">▲</i>近3小时持续增长</small></div>
               </div>
               <div class="launch-metric-card">
-                <i class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 7h7a3 3 0 0 1 0 6H9"></path><path d="M17 17H7"></path></svg></i>
-                <div><span>线索成本</span><b>¥41</b><small class="down"><i class="metric-arrow">▼</i>低于目标成本 ¥45</small></div>
+                <i class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-5-3-5 3z"></path><path d="M9.5 8h5"></path><path d="M9.5 12h5"></path></svg></i>
+                <div><span>预定单</span><b>18</b><small><i class="metric-arrow">▲</i>高意向客户持续转化</small></div>
               </div>
             </div>
 
@@ -1680,11 +1717,11 @@
                 <div class="trend-legend">
                   <span><i></i>曝光（次）</span>
                   <span><i></i>点击率（%）</span>
-                  <span><i></i>表单数（个）</span>
-                  <span><i></i>线索成本（¥）</span>
+                  <span><i></i>咨询量（个）</span>
+                  <span><i></i>预定单（个）</span>
                 </div>
                 <div class="trend-svg-wrap" aria-label="投放趋势图">
-                  <svg viewBox="0 0 640 240" role="img" aria-label="曝光、点击率、表单数、线索成本趋势">
+                  <svg viewBox="0 0 640 240" role="img" aria-label="曝光、点击率、咨询量、预定单趋势">
                     <defs>
                       <filter id="trendGlow" x="-20%" y="-20%" width="140%" height="140%">
                         <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
@@ -1698,8 +1735,8 @@
                     <line class="trend-grid-line" x1="36" y1="92" x2="616" y2="92"></line>
                     <line class="trend-grid-line" x1="36" y1="142" x2="616" y2="142"></line>
                     <line class="trend-grid-line" x1="36" y1="192" x2="616" y2="192"></line>
-                    <text class="trend-axis-label" x="38" y="32">曝光 / 表单数</text>
-                    <text class="trend-axis-label" x="558" y="32">点击率 / 成本</text>
+                    <text class="trend-axis-label" x="38" y="32">曝光 / 咨询量</text>
+                    <text class="trend-axis-label" x="548" y="32">点击率 / 预定单</text>
                     <text class="trend-axis-label" x="42" y="220">18:00</text>
                     <text class="trend-axis-label" x="164" y="220">22:00</text>
                     <text class="trend-axis-label" x="292" y="220">02:00</text>
@@ -1732,25 +1769,6 @@
                 <div class="review-generated-note">优化版策略已生成，可进入复盘迭代查看</div>
               </article>
             </div>
-
-            <article class="launch-card material-summary-card">
-              <div>
-                <div class="material-summary-head">
-                  <h3>当前素材表现摘要</h3>
-                </div>
-                <div class="material-performance">
-                  <div><span>当前素材</span><b>价格焦虑型</b></div>
-                  <div><span>表现</span><b>高点击、低成本</b></div>
-                  <div><span>问题</span><b>信任承诺不足</b></div>
-                  <div><span>建议方向</span><b>报价差异开头 + 透明预算证明</b></div>
-                </div>
-              </div>
-              <div class="launch-bottom-actions">
-                <button class="btn btn-primary review-generate-action" onclick="generateReviewDirections(this)">基于数据生成优化版</button>
-                <button class="btn btn-outline" onclick="notify('已打开预算调整入口')">调整投放预算</button>
-                <button class="btn btn-outline review-enter-action hide" onclick="enterReviewIteration()">进入复盘迭代</button>
-              </div>
-            </article>
 
             <div id="reviewDirectionLoading" class="ai-loading hide">
               <div id="reviewDirectionThinking" class="ai-thinking" role="status" aria-live="polite"></div>
@@ -1811,25 +1829,83 @@
 <div id="drawerMask" class="drawer-mask" onclick="closeAssetDrawer()"></div>
 <div id="launchPlanModal" class="modal-mask" onclick="closeLaunchPlanModal()">
   <div class="plan-modal" role="dialog" aria-modal="true" aria-labelledby="launchPlanTitle" onclick="event.stopPropagation()">
-    <h2 id="launchPlanTitle">创建投放计划</h2>
+    <div class="plan-modal-head">
+      <h2 id="launchPlanTitle">创建投放计划</h2>
+      <button type="button" class="plan-close" aria-label="关闭" onclick="closeLaunchPlanModal()">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
     <div class="plan-form">
-      <div class="field">
-        <label for="planPlatform">平台</label>
-        <select id="planPlatform">
-          <option>抖音信息流</option>
-          <option>小红书信息流</option>
-          <option>视频号广告</option>
-          <option>快手信息流</option>
-        </select>
+      <div class="plan-row">
+        <label class="plan-label" for="planPlatform">投放平台</label>
+        <div class="plan-control plan-platform-select">
+          <span class="platform-logo douyin" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M15.1 3c.4 2.5 1.8 4.1 4.4 4.4v3.4c-1.5 0-2.9-.4-4.1-1.1v5.5c0 3.6-2.6 5.8-5.8 5.8A5.5 5.5 0 0 1 4 15.5c0-3.4 2.7-5.6 5.9-5.6.4 0 .8 0 1.1.1v3.5c-.3-.1-.7-.2-1.1-.2-1.3 0-2.4.9-2.4 2.2s1 2.2 2.2 2.2c1.4 0 2.3-.9 2.3-2.6V3h3.1Z"/></svg>
+          </span>
+          <span id="planPlatformName" class="platform-name">抖音信息流</span>
+          <select id="planPlatform" onchange="updatePlanPlatformLabel()">
+            <option>抖音信息流</option>
+            <option>小红书信息流</option>
+            <option>视频号广告</option>
+            <option>快手信息流</option>
+          </select>
+          <span class="select-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+        </div>
       </div>
-      <div class="field">
-        <label for="planSchedule">排期</label>
-        <input id="planSchedule" value="06-08 18:00 - 06-10 18:00" />
+      <div class="plan-row">
+        <label class="plan-label" for="planBudget">每日预算</label>
+        <div class="plan-control budget-input-wrap">
+          <input id="planBudget" type="number" min="100" step="50" value="300" inputmode="numeric" oninput="updatePlanEstimate()" />
+          <span class="budget-suffix">元 / 天</span>
+        </div>
+      </div>
+      <div class="plan-row">
+        <span class="plan-label">投放周期</span>
+        <div class="plan-period-wrap">
+          <div class="plan-stepper">
+            <button type="button" aria-label="减少投放天数" onclick="adjustPlanDays(-1)">−</button>
+            <input id="planDays" type="number" min="1" max="30" value="3" inputmode="numeric" oninput="updatePlanEstimate()" />
+            <button type="button" aria-label="增加投放天数" onclick="adjustPlanDays(1)">+</button>
+          </div>
+          <span class="period-unit">天</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-estimate">
+      <div class="estimate-main">
+        <span class="estimate-label">预计花费</span>
+        <strong id="planEstimatedSpend" class="estimate-price">¥900</strong>
+      </div>
+      <span class="estimate-note">根据每日预算 × 投放周期自动计算</span>
+      <span class="estimate-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8 7h8M8 11h2M12 11h2M16 11h.01M8 15h2M12 15h2M16 15h.01M8 18h2M12 18h2M16 18h.01"/></svg>
+      </span>
+    </div>
+    <div class="plan-effect">
+      <div class="effect-layout">
+        <div class="effect-title">预期效果</div>
+        <div>
+          <div class="effect-list">
+            <div class="effect-row">
+              <span class="effect-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg></span>
+              <div class="effect-copy"><span>预计播放量：</span><b id="planEstimateViews">1.2w - 2.5w</b></div>
+            </div>
+            <div class="effect-row">
+              <span class="effect-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+              <div class="effect-copy"><span>预计咨询量：</span><b id="planEstimateConsults">15 - 30</b></div>
+            </div>
+            <div class="effect-row">
+              <span class="effect-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-5-3-5 3Z"/><path d="M9.5 8h5M9.5 12h5"/></svg></span>
+              <div class="effect-copy"><span>预计预定单：</span><b id="planEstimateOrders">3 - 8</b></div>
+            </div>
+          </div>
+          <p class="effect-note">基于相同行业家装获客素材预估，实际效果以平台投放数据为准</p>
+        </div>
       </div>
     </div>
     <div class="plan-actions">
       <button class="btn btn-outline" onclick="closeLaunchPlanModal()">取消</button>
-      <button class="btn btn-primary" onclick="confirmLaunchPlan()">确认投放</button>
+      <button class="btn btn-primary" onclick="confirmLaunchPlan()">确认创建</button>
     </div>
   </div>
 </div>
@@ -1982,7 +2058,7 @@
   let scriptGenerated=false;
   let activeVersion=0;
   let launchStatus='draft';
-  const launchPlan={platform:'抖音信息流',budget:'3000 元/天',schedule:'06-08 18:00 - 06-10 18:00'};
+  const launchPlan={platform:'抖音信息流',dailyBudget:300,days:3,budget:'300 元/天',schedule:'投放 3 天'};
   const versions=[
     {name:'V1 初版',source:'投放需求单',status:'已合成',adStatus:'待投放',launchStatus:'draft',reviewDirectionsGenerated:false,direction:'价格焦虑型',summary:'装修报价为什么差这么多？',ctr:'3.8%',cost:'¥41',forms:'126'}
   ];
@@ -2296,17 +2372,77 @@
     document.getElementById('assetDrawer').classList.remove('show');
   }
   function openLaunchPlanModal(){
+    const platform=document.getElementById('planPlatform');
+    const budget=document.getElementById('planBudget');
+    const days=document.getElementById('planDays');
+    if(platform) platform.value=launchPlan.platform;
+    if(budget) budget.value=launchPlan.dailyBudget||300;
+    if(days) days.value=launchPlan.days||3;
+    updatePlanPlatformLabel();
+    updatePlanEstimate();
     document.getElementById('launchPlanModal').classList.add('show');
   }
   function closeLaunchPlanModal(){
     document.getElementById('launchPlanModal').classList.remove('show');
   }
+  function updatePlanPlatformLabel(){
+    const platform=document.getElementById('planPlatform');
+    const label=document.getElementById('planPlatformName');
+    const logo=document.querySelector('.plan-platform-select .platform-logo');
+    if(!platform||!label) return;
+    const value=platform.value;
+    label.textContent=value;
+    if(logo){
+      const cls=value.includes('小红书')?'xiaohongshu':value.includes('视频号')?'video':value.includes('快手')?'kuaishou':'douyin';
+      logo.className=`platform-logo ${cls}`;
+    }
+  }
+  function normalizePlanNumber(value, fallback, min=1, max=999999){
+    const numeric=Number(value);
+    if(!Number.isFinite(numeric)) return fallback;
+    return Math.max(min,Math.min(max,Math.round(numeric)));
+  }
+  function adjustPlanDays(delta){
+    const days=document.getElementById('planDays');
+    if(!days) return;
+    days.value=normalizePlanNumber(Number(days.value||3)+delta,3,1,30);
+    updatePlanEstimate();
+  }
+  function formatWan(value){
+    if(value>=10000){
+      const text=(value/10000).toFixed(1).replace(/\.0$/,'');
+      return `${text}w`;
+    }
+    return String(Math.round(value));
+  }
+  function updatePlanEstimate(){
+    updatePlanPlatformLabel();
+    const budgetInput=document.getElementById('planBudget');
+    const daysInput=document.getElementById('planDays');
+    const spendEl=document.getElementById('planEstimatedSpend');
+    const viewsEl=document.getElementById('planEstimateViews');
+    const consultsEl=document.getElementById('planEstimateConsults');
+    const ordersEl=document.getElementById('planEstimateOrders');
+    const dailyBudget=normalizePlanNumber(budgetInput?.value,300,100,999999);
+    const days=normalizePlanNumber(daysInput?.value,3,1,30);
+    if(budgetInput&&budgetInput.value!==String(dailyBudget)) budgetInput.value=dailyBudget;
+    if(daysInput&&daysInput.value!==String(days)) daysInput.value=days;
+    const spend=dailyBudget*days;
+    const scale=Math.max(.35,spend/900);
+    if(spendEl) spendEl.textContent=`¥${spend.toLocaleString('zh-CN')}`;
+    if(viewsEl) viewsEl.textContent=`${formatWan(12000*scale)} - ${formatWan(25000*scale)}`;
+    if(consultsEl) consultsEl.textContent=`${Math.max(1,Math.round(15*scale))} - ${Math.max(2,Math.round(30*scale))}`;
+    if(ordersEl) ordersEl.textContent=`${Math.max(1,Math.round(3*scale))} - ${Math.max(1,Math.round(8*scale))}`;
+  }
   function confirmLaunchPlan(){
-    const platform=document.getElementById('planPlatform').value;
-    const schedule=document.getElementById('planSchedule').value;
-    launchPlan.platform=platform;
-    launchPlan.schedule=schedule;
-    launchPlan.budget='3000 元/天';
+    const platform=document.getElementById('planPlatform');
+    const budget=document.getElementById('planBudget');
+    const days=document.getElementById('planDays');
+    launchPlan.platform=platform?.value||'抖音信息流';
+    launchPlan.dailyBudget=normalizePlanNumber(budget?.value,300,100,999999);
+    launchPlan.days=normalizePlanNumber(days?.value,3,1,30);
+    launchPlan.budget=`${launchPlan.dailyBudget.toLocaleString('zh-CN')} 元/天`;
+    launchPlan.schedule=`投放 ${launchPlan.days} 天`;
     versions[activeVersion].launchStatus='draft';
     versions[activeVersion].adStatus='待投放';
     launchStatus='draft';
@@ -2736,7 +2872,7 @@
   renderVersions();
   setStep(0);
 </script>
-<script src="scripts/home.js?v=20260613-case-library"></script>
+<script src="scripts/home.js?v=20260616-workspace-entry"></script>
 <script>
 (function(){
   var bar = document.getElementById('hpFloatBar');

@@ -16,6 +16,7 @@ function submitHomePrompt(btn){
   const value=homePrompt?.value.trim();
   const fallbackMode=value && !value.toUpperCase().startsWith('QJ-') && !/^\d+$/.test(value) ? 'demand' : 'qijia';
   const mode=btn?.dataset.homeMode||homePrompt?.dataset.homeMode||fallbackMode;
+  const stop=setHomeSendLoading(btn);
   setCreateMode('selected');
   if(mode==='demand'){
     updateSelectedPlanSummary(
@@ -30,9 +31,28 @@ function submitHomePrompt(btn){
       '待按本次需求确认投放渠道'
     );
   }
-  if(createPrompt) createPrompt.value='';
-  if(typeof showPage==='function') showPage('create');
-  if(typeof notify==='function') notify(value?'已匹配专属方案，请补充本次需求':'请先补充本次投放需求');
+  if(createPrompt) createPrompt.value=value||'';
+  const workspaceTitle=document.querySelector('#workspace .title h1');
+  if(workspaceTitle) workspaceTitle.textContent=value?'AI获客方案工作台':'齐家网·AI获客方案';
+  if(typeof createProject==='function'){
+    createProject();
+  }else if(typeof openProjectAtStep==='function'){
+    openProjectAtStep(0,workspaceTitle?.textContent||'AI获客方案工作台');
+  }else if(typeof showPage==='function'){
+    showPage('workspace');
+  }
+  if(typeof notify==='function') notify(value?'正在根据需求生成项目工作台':'正在进入项目工作台');
+  setTimeout(stop,2200);
+}
+
+function setHomeSendLoading(btn){
+  if(!btn) return ()=>{};
+  btn.classList.add('is-loading');
+  btn.disabled=true;
+  return ()=>{
+    btn.classList.remove('is-loading');
+    btn.disabled=false;
+  };
 }
 
 function searchHomeCases(btn){
@@ -74,6 +94,14 @@ function selectHomeCase(card){
   if(createPrompt) createPrompt.value='';
   if(typeof showPage==='function') showPage('create');
   if(typeof notify==='function') notify(`已选择「${name}」，请补充本次需求`);
+}
+
+function openCreateFromQuickTab(name){
+  const createPrompt=document.querySelector('#create textarea');
+  setCreateMode('selected');
+  updateSelectedPlanSummary(name, '基于该获客方向补充投放目标、预算、人群和素材要求', '首页快捷入口');
+  if(createPrompt) createPrompt.value='';
+  if(typeof showPage==='function') showPage('create');
 }
 
 function openCreateFromScratch(){
